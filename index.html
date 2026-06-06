@@ -241,6 +241,35 @@
 </section>
 
 <!-- ============================================================= -->
+<!--  HOW IT WORKS (fulfillment — clave por ser itinerante)         -->
+<!-- ============================================================= -->
+<section class="section how">
+  <div class="container">
+    <div class="section-head center-head">
+      <h2 class="section-title center" data-en="How it works" data-es="Cómo funciona">How it works</h2>
+      <p class="section-lead center" data-en="Built for impulse. From craving to cookie in three little steps." data-es="Hecho para el antojo. Del deseo a la galleta en tres pasitos.">Built for impulse. From craving to cookie in three little steps.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="how-num">1</span>
+        <h3 data-en="Order in seconds" data-es="Pide en segundos">Order in seconds</h3>
+        <p data-en="Add your favorites and check out on WhatsApp or Instagram. No account, no friction." data-es="Agrega tus favoritas y paga por WhatsApp o Instagram. Sin cuenta, sin fricción.">Add your favorites and check out on WhatsApp or Instagram. No account, no friction.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-num">2</span>
+        <h3 data-en="We confirm the spot" data-es="Confirmamos el punto">We confirm the spot</h3>
+        <p data-en="Pick up at the next market 🐻 or get local delivery across South Florida." data-es="Recoge en el próximo market 🐻 o recibe delivery local en South Florida.">Pick up at the next market 🐻 or get local delivery across South Florida.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-num">3</span>
+        <h3 data-en="Break it. Share it." data-es="Pártela. Compártela.">Break it. Share it.</h3>
+        <p data-en="Fold it in half, watch it ooze, take the photo. Tag @gallete_co — we always repost." data-es="Pártela a la mitad, mira cómo se derrite, toma la foto. Etiqueta a @gallete_co — siempre reposteamos.">Fold it in half, watch it ooze, take the photo. Tag @gallete_co — we always repost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
 <!--  ABOUT                                                         -->
 <!-- ============================================================= -->
 <section class="section about" id="about">
@@ -360,6 +389,34 @@
     <span data-en="Made with gooey love 🐻" data-es="Hecho con amor gooey 🐻">Made with gooey love 🐻</span>
   </div>
 </footer>
+
+<!-- ============================================================= -->
+<!--  QUICK VIEW MODAL (patrón ecommerce — detalle de producto)     -->
+<!-- ============================================================= -->
+<div class="qv-overlay" id="qvOverlay">
+  <div class="qv-modal" role="dialog" aria-modal="true" aria-labelledby="qvName">
+    <button class="qv-close" id="qvClose" aria-label="Close">✕</button>
+    <div class="qv-media">
+      <img id="qvImg" alt="" />
+      <span class="qv-emoji" id="qvEmoji">🍪</span>
+    </div>
+    <div class="qv-body">
+      <span class="qv-flag" id="qvFlag"></span>
+      <h3 id="qvName">—</h3>
+      <p class="qv-desc" id="qvDesc">—</p>
+      <div class="qv-price" id="qvPrice">$—</div>
+      <div class="qv-actions">
+        <div class="qv-qty">
+          <button id="qvMinus" aria-label="Less">−</button>
+          <span id="qvQty">1</span>
+          <button id="qvPlus" aria-label="More">+</button>
+        </div>
+        <button class="btn btn-primary" id="qvAdd" data-en="Add to bag" data-es="Agregar a la bolsa">Add to bag</button>
+      </div>
+      <p class="qv-note" data-en="🐻 Pickup at the next market or local South Florida delivery" data-es="🐻 Recoge en el próximo market o delivery local en South Florida">🐻 Pickup at the next market or local South Florida delivery</p>
+    </div>
+  </div>
+</div>
 
 <!-- ============================================================= -->
 <!--  CART DRAWER                                                   -->
@@ -606,6 +663,37 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .cart-total{display:flex;justify-content:space-between;font-family:var(--font-display);font-size:1.2rem;margin-bottom:16px;color:var(--wine)}
 .cart-ig{display:block;text-align:center;margin-top:12px;font-size:.88rem;color:var(--pink);font-weight:600}
 
+/* ---- how it works ---- */
+.how{background:var(--pink-bg)}
+.center-head{text-align:center;display:flex;flex-direction:column;align-items:center}
+.section-lead.center{margin-left:auto;margin-right:auto}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,30px);counter-reset:step}
+.how-step{background:var(--paper);border-radius:var(--r-lg);padding:32px 26px;box-shadow:var(--shadow-sm);border:1px solid #f7e2ee;text-align:center}
+.how-num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--pink);color:var(--wine);font-family:var(--font-display);font-weight:700;font-size:1.4rem;margin-bottom:14px}
+.how-step h3{font-size:1.3rem;margin-bottom:8px}
+.how-step p{color:var(--muted);font-size:.95rem}
+
+/* ---- quick view ---- */
+.qv-overlay{position:fixed;inset:0;background:rgba(58,10,27,.5);display:none;align-items:center;justify-content:center;z-index:110;padding:20px}
+.qv-overlay.open{display:flex}
+.qv-modal{background:var(--cream-bg);border-radius:var(--r-lg);width:min(840px,100%);max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative;box-shadow:var(--shadow)}
+.qv-close{position:absolute;top:14px;right:14px;z-index:2;background:rgba(255,255,255,.9);border:none;width:38px;height:38px;border-radius:50%;font-size:1.1rem;cursor:pointer;color:var(--wine)}
+.qv-media{position:relative;background:var(--pink-soft);min-height:280px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.qv-media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.qv-media img:not([src]),.qv-media img[src=""]{display:none}
+.qv-emoji{font-size:4rem;position:relative}
+.qv-body{padding:34px 30px;display:flex;flex-direction:column}
+.qv-flag{font-family:var(--font-display);font-weight:600;font-size:.85rem;color:var(--pink);margin-bottom:6px}
+.qv-body h3{font-size:1.9rem;margin-bottom:10px}
+.qv-desc{color:var(--muted);font-size:1rem;margin-bottom:16px}
+.qv-price{font-family:var(--font-display);font-weight:700;font-size:1.8rem;color:var(--wine);margin-bottom:20px}
+.qv-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.qv-qty{display:flex;align-items:center;gap:14px;border:2px solid var(--ring);border-radius:999px;padding:8px 16px}
+.qv-qty button{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--wine);font-weight:700;line-height:1}
+.qv-qty span{font-family:var(--font-display);font-weight:600;min-width:18px;text-align:center}
+.qv-note{margin-top:18px;font-size:.85rem;color:var(--muted)}
+.clickable,.trio-photo{cursor:pointer}
+
 /* ---- responsive ---- */
 @media(max-width:860px){
   .nav-links{display:none}
@@ -616,6 +704,9 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
   .about-grid{grid-template-columns:1fr;gap:48px}
   .about-visual{max-width:420px;margin:0 auto}
   .trio{grid-template-columns:1fr}
+  .how-grid{grid-template-columns:1fr}
+  .qv-modal{grid-template-columns:1fr;max-height:92vh}
+  .qv-media{min-height:240px;aspect-ratio:4/3}
   .footer-grid{grid-template-columns:1fr;gap:28px}
 }
 @media(max-width:560px){
@@ -727,12 +818,12 @@ const MARKETS = [
     PRODUCTS.forEach(p=>{
       const el=document.createElement('article'); el.className='shop-card';
       el.innerHTML=`
-        <div class="shop-photo photo-slot" data-slot="${p.id}">
+        <div class="shop-photo photo-slot clickable" data-slot="${p.id}" data-qv="${p.id}">
           <span class="shop-flag ${p.flagGreen?'green':''}">${p['flag_'+lang]}</span>
           <span class="slot-label">📷<br><small>assets/img/${p.id}.jpg</small></span>
         </div>
         <div class="shop-info">
-          <h3>${p['name_'+lang]}</h3>
+          <h3 class="clickable" data-qv="${p.id}">${p['name_'+lang]}</h3>
           <p class="desc">${p['desc_'+lang]}</p>
           <div class="shop-foot">
             <span class="price">${fmt(p.price)}</span>
@@ -797,6 +888,45 @@ const MARKETS = [
   function openCart(){cd.classList.add('open');overlay.classList.add('open');cd.setAttribute('aria-hidden','false');}
   function closeCart(){cd.classList.remove('open');overlay.classList.remove('open');cd.setAttribute('aria-hidden','true');}
   $('#cartBtn').onclick=openCart; $('#cartClose').onclick=closeCart; overlay.onclick=closeCart;
+
+  /* ---------- QUICK VIEW (detalle de producto) ---------- */
+  let qvCurrent=null, qvQ=1;
+  const qvOv=$('#qvOverlay');
+  function openQuickView(id){
+    const p=prod(id); if(!p) return;
+    qvCurrent=id; qvQ=1; $('#qvQty').textContent='1';
+    $('#qvName').textContent=p['name_'+lang];
+    $('#qvDesc').textContent=p['desc_'+lang];
+    $('#qvPrice').textContent=fmt(p.price);
+    $('#qvFlag').textContent=p['flag_'+lang]||'';
+    const img=$('#qvImg'), emo=$('#qvEmoji');
+    emo.textContent=p.emoji||'🍪';
+    img.style.display='none'; emo.style.display='block'; img.removeAttribute('src');
+    const exts=['jpg','jpeg','png','webp'];
+    (function tryExt(i){
+      if(i>=exts.length) return;
+      const test=new Image();
+      test.onload=()=>{ img.src='assets/img/'+id+'.'+exts[i]; img.alt=p['name_'+lang]; img.style.display='block'; emo.style.display='none'; };
+      test.onerror=()=>tryExt(i+1);
+      test.src='assets/img/'+id+'.'+exts[i];
+    })(0);
+    qvOv.classList.add('open');
+  }
+  function closeQV(){ qvOv.classList.remove('open'); }
+  $('#qvPlus').onclick=()=>{qvQ++;$('#qvQty').textContent=qvQ;};
+  $('#qvMinus').onclick=()=>{ if(qvQ>1){qvQ--;$('#qvQty').textContent=qvQ;} };
+  $('#qvAdd').onclick=()=>{ if(!qvCurrent)return; cart[qvCurrent]=(cart[qvCurrent]||0)+qvQ; save(); renderCart(); closeQV(); openCart(); };
+  $('#qvClose').onclick=closeQV;
+  qvOv.addEventListener('click',e=>{ if(e.target===qvOv) closeQV(); });
+  /* abrir quick view: fotos/títulos de tienda (data-qv) y fotos del trío */
+  document.addEventListener('click',e=>{
+    const qvEl=e.target.closest('[data-qv]');
+    if(qvEl){ openQuickView(qvEl.dataset.qv); return; }
+    const tp=e.target.closest('.trio-photo');
+    if(tp){ const b=tp.closest('.trio-card')?.querySelector('.add-btn'); if(b) openQuickView(b.dataset.id); }
+  });
+  /* Esc cierra modal o carrito */
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeQV(); closeCart(); } });
 
   /* ---------- CHECKOUT via WhatsApp ---------- */
   function buildOrderMsg(){
