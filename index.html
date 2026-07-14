@@ -774,27 +774,19 @@ const ORDER_PHONE = "1XXXXXXXXXX"; // 👈 reemplazar por el número real de Gal
    precio en número. flag = etiqueta. flagGreen=true pinta la etiqueta de verde matcha.
    emoji = se muestra en el carrito. img = ruta de la foto (cuando la tengas). */
 const PRODUCTS = [
-  {id:"cookie-box", name_en:"The Cookie Box",   name_es:"La Caja de Galletas",   price:24,
-   flag_en:"🔥 Bestseller", flag_es:"🔥 La más vendida", emoji:"🍪",
-   desc_en:"Thick, gooey, fold-in-half cookies — a box made to share.",
-   desc_es:"Galletas gruesas que se parten a la mitad — una caja para compartir."},
-  {id:"matcha-box", name_en:"Matcha Tea Box",   name_es:"Caja de Té Matcha",     price:22, flagGreen:true,
-   flag_en:"🍵 Viral", flag_es:"🍵 Viral", emoji:"🍵",
-   desc_en:"Assorted ceremonial matcha sachets. Which matcha are you today?",
-   desc_es:"Sobres de matcha ceremonial surtidos. ¿Cuál matcha eres hoy?"},
-  {id:"mini-jar",   name_en:"Mini Cookie Jar",  name_es:"Tarro de Mini Galletas",price:16,
-   flag_en:"🐻 Cute gift", flag_es:"🐻 Regalo lindo", emoji:"🫙",
-   desc_en:"A jar of bite-size cookies. Pop the lid, snack forever.",
-   desc_es:"Un tarro de galletas mini. Destápalo y pica sin parar."},
-  {id:"dog-mug",    name_en:"Pop-Art Dog Mug",  name_es:"Mug Perro Pop-Art",     price:18,
-   flag_en:"🎨 Limited", flag_es:"🎨 Limitado", emoji:"🐶",
-   desc_en:"The mug everyone screenshots. Pairs with matcha + a cookie.",
-   desc_es:"El mug que todos capturan. Va con matcha + una galleta."},
-  {id:"gift-box",   name_en:"The Gift Box",     name_es:"La Caja Regalo",        price:48,
-   flag_en:"🎁 Made to gift", flag_es:"🎁 Para regalar", emoji:"🎁",
-   desc_en:"Mug + matcha tin + cookies, nested in a keepsake box.",
-   desc_es:"Mug + lata de matcha + galletas, en una caja de colección."},
-  {id:"drop",       name_en:"This Month's Drop",name_es:"Drop del Mes",          price:14,
+  {id:"cookie-box", name_en:"Mini Cookie Bucket", name_es:"Balde de Mini Galletas", price:null,
+   flag_en:"🔥 The viral one", flag_es:"🔥 La viral", emoji:"🪣",
+   desc_en:"A bucket of mini cookies + a Nutella dip. More minis, more sharing, more fun.",
+   desc_es:"Un balde de mini galletas + dip de Nutella. Más minis, más para compartir, más diversión."},
+  {id:"matcha-box", name_en:"Ceremonial Matcha", name_es:"Matcha Ceremonial",     price:20, flagGreen:true,
+   flag_en:"🍵 Tin 30g", flag_es:"🍵 Lata 30g", emoji:"🍵",
+   desc_en:"Ceremonial-grade matcha powder. Vanilla, Strawberry, Banana, Honey Caramel & more.",
+   desc_es:"Matcha ceremonial en polvo. Vanilla, Strawberry, Banana, Honey Caramel y más."},
+  {id:"mini-jar",   name_en:"Box of 24 Minis",  name_es:"Caja de 24 Minis",      price:null,
+   flag_en:"🍪 Build your own", flag_es:"🍪 Arma la tuya", emoji:"🍪",
+   desc_en:"Build your own box — choose your flavors.",
+   desc_es:"Arma tu propia caja — elige tus sabores."},
+  {id:"drop",       name_en:"This Month's Drop",name_es:"Drop del Mes",          price:null,
    flag_en:"✨ New", flag_es:"✨ Nuevo", emoji:"⭐",
    desc_en:"Our rotating themed cookie. Here today, gone next market.",
    desc_es:"Nuestra galleta temática rotativa. Hoy está, en el próximo market no."}
@@ -822,7 +814,7 @@ const MARKETS = [
    =================================================================== */
 (function(){
   const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
-  const fmt=n=>"$"+n;
+  const fmt=n=>(n==null)?"—":"$"+n;
 
   /* ---------- LANGUAGE ---------- */
   let lang = (new URLSearchParams(location.search).get('lang')) || localStorage.getItem('gallete_lang') || 'en';
