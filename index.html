@@ -165,9 +165,10 @@
     </div>
 
     <div class="hero-visual">
-      <!-- PHOTO SLOT: hero gooey cookie. Replace src with real photo. -->
-      <div class="hero-photo photo-slot" data-slot="hero-cookie">
-        <span class="slot-label">📷 hero cookie photo<br><small>assets/img/hero-cookie.jpg</small></span>
+      <!-- HERO: alterna entre galleta entera y partida cada 3s -->
+      <div class="hero-photo hero-swap">
+        <img class="hero-slide is-on" src="assets/img/hero-a.jpg" alt="Galleté Nutella cookie" fetchpriority="high">
+        <img class="hero-slide" src="assets/img/hero-b.jpg" alt="Galleté Nutella cookie, gooey inside" fetchpriority="high">
       </div>
       <div class="hero-badge" data-en="fresh<br>today" data-es="recién<br>horneadas">fresh<br>today</div>
     </div>
@@ -724,6 +725,10 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .hero-trust{display:flex;flex-wrap:wrap;gap:18px;font-size:.9rem;font-weight:600;color:var(--wine)}
 .hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
 .hero-photo{width:100%;aspect-ratio:4/5;border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.hero-swap{position:relative;overflow:hidden}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s var(--ease-out)}
+.hero-slide.is-on{opacity:1}
+@media (prefers-reduced-motion:reduce){.hero-slide{transition:opacity .3s ease}}
 .hero-badge{position:absolute;top:-18px;right:-10px;background:var(--matcha);color:#fff;font-family:var(--font-display);font-weight:700;text-align:center;line-height:1.05;width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);box-shadow:var(--shadow-sm);font-size:1.05rem;text-transform:lowercase}
 
 /* ---- photo slots (placeholders until real photos dropped in) ---- */
@@ -1166,6 +1171,19 @@ const MARKETS = [
   addEventListener('scroll',onScroll,{passive:true});
   addEventListener('resize',onScroll,{passive:true});
   update();
+})();
+
+/* ---------- Hero: alterna las 2 fotos cada 3s (crossfade) ---------- */
+(function(){
+  var slides=document.querySelectorAll('.hero-swap .hero-slide');
+  if(slides.length<2) return;
+  var i=0;
+  setInterval(function(){
+    if(document.hidden) return;              // pausa si la pestaña no está visible (Emil)
+    slides[i].classList.remove('is-on');
+    i=(i+1)%slides.length;
+    slides[i].classList.add('is-on');
+  },3000);
 })();
 </script>
 </body>
