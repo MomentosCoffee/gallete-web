@@ -312,6 +312,11 @@
           <figure data-qv="matcha-box" data-qv-name="Strawberry Matcha" data-qv-img="matcha-strawberry"><div class="mc-pic"><img src="assets/img/matcha-strawberry.jpg" alt="Strawberry matcha" loading="lazy"></div><figcaption>Strawberry</figcaption></figure>
           <figure data-qv="matcha-box" data-qv-name="Banana Matcha" data-qv-img="matcha-banana"><div class="mc-pic"><img src="assets/img/matcha-banana.jpg" alt="Banana matcha" loading="lazy"></div><figcaption>Banana</figcaption></figure>
           <figure data-qv="matcha-box" data-qv-name="Honey Caramel Matcha" data-qv-img="matcha-honey"><div class="mc-pic"><img src="assets/img/matcha-honey.jpg" alt="Honey Caramel matcha" loading="lazy"></div><figcaption>Honey Caramel</figcaption></figure>
+          <figure aria-hidden="true" data-qv="matcha-box" data-qv-name="Ceremonial Matcha" data-qv-img="matcha-ceremonial"><div class="mc-pic"><img src="assets/img/matcha-ceremonial.jpg" alt="" loading="lazy"></div><figcaption>Ceremonial</figcaption></figure>
+          <figure aria-hidden="true" data-qv="matcha-box" data-qv-name="Vanilla Matcha" data-qv-img="matcha-vanilla"><div class="mc-pic"><img src="assets/img/matcha-vanilla.jpg" alt="" loading="lazy"></div><figcaption>Vanilla</figcaption></figure>
+          <figure aria-hidden="true" data-qv="matcha-box" data-qv-name="Strawberry Matcha" data-qv-img="matcha-strawberry"><div class="mc-pic"><img src="assets/img/matcha-strawberry.jpg" alt="" loading="lazy"></div><figcaption>Strawberry</figcaption></figure>
+          <figure aria-hidden="true" data-qv="matcha-box" data-qv-name="Banana Matcha" data-qv-img="matcha-banana"><div class="mc-pic"><img src="assets/img/matcha-banana.jpg" alt="" loading="lazy"></div><figcaption>Banana</figcaption></figure>
+          <figure aria-hidden="true" data-qv="matcha-box" data-qv-name="Honey Caramel Matcha" data-qv-img="matcha-honey"><div class="mc-pic"><img src="assets/img/matcha-honey.jpg" alt="" loading="lazy"></div><figcaption>Honey Caramel</figcaption></figure>
         </div>
         <button class="mc-arrow mc-next" type="button" aria-label="Siguiente"><span class="material-symbols-rounded">chevron_right</span></button>
       </div>
@@ -559,7 +564,7 @@
   --ease-in-out:cubic-bezier(0.77,0,0.175,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
 body{
   font-family:var(--font-body);
   color:var(--ink);
@@ -682,7 +687,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 @media(max-width:600px){.flavor-track>figure{width:190px}.flavor-track{gap:18px}.flavor-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
 /* ---- carrusel matcha con flechas (auto + manual) ---- */
 .matcha-carousel{position:relative;max-width:900px;margin:0 auto;padding:0 46px}
-.mc-track{display:flex;gap:18px;overflow-x:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 4px 12px}
+.mc-track{display:flex;gap:18px;overflow-x:auto;scroll-behavior:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 4px 12px}
 .mc-track::-webkit-scrollbar{display:none}
 .mc-track>figure{flex:0 0 auto;width:186px;margin:0;text-align:center;cursor:pointer}
 .mc-pic{aspect-ratio:1;border-radius:24px;overflow:hidden;background:#EFDFCB;transition:transform .3s var(--ease-out),box-shadow .3s var(--ease-out)}
@@ -1220,28 +1225,35 @@ const MARKETS = [
   });
 })();
 
-/* ---------- Carrusel matcha: flechas + auto-scroll (pausa en hover/interacción) ---------- */
+/* ---------- Carrusel matcha: movimiento continuo suave + flechas manuales ---------- */
 (function(){
   var track=document.getElementById('matchaTrack');
   if(!track) return;
   var prev=document.querySelector('.mc-prev'), next=document.querySelector('.mc-next');
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function cardW(){ var f=track.querySelector('figure'); return f ? f.offsetWidth+18 : 200; }
-  function atEnd(){ return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; }
+  function period(){ return (track.children.length/2) * cardW(); }   // ancho de un set (loop sin costura)
   function step(dir){ track.scrollBy({left:dir*cardW(), behavior:'smooth'}); }
   if(prev) prev.addEventListener('click',function(){ step(-1); poke(); });
   if(next) next.addEventListener('click',function(){ step(1); poke(); });
 
-  var timer=null;
-  function tick(){ if(document.hidden) return; if(atEnd()){ track.scrollTo({left:0,behavior:'smooth'}); } else { step(1); } }
-  function start(){ if(reduce) return; stop(); timer=setInterval(tick,3000); }
-  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-  var resume=null;
-  function poke(){ stop(); clearTimeout(resume); resume=setTimeout(start,6000); } // reanuda tras interacción
-  track.addEventListener('mouseenter',stop);
-  track.addEventListener('mouseleave',start);
+  var hoverPause=false, manualPause=false, mt=null;
+  function poke(){ manualPause=true; clearTimeout(mt); mt=setTimeout(function(){manualPause=false;},4000); }
+  track.addEventListener('mouseenter',function(){hoverPause=true;});
+  track.addEventListener('mouseleave',function(){hoverPause=false;});
   track.addEventListener('touchstart',poke,{passive:true});
-  start();
+  track.addEventListener('wheel',poke,{passive:true});
+
+  var SPEED=0.5;                                   // px por frame ≈ 30px/s, sutil como antes
+  function loop(){
+    if(!hoverPause && !manualPause && !document.hidden){
+      track.scrollLeft += SPEED;
+      var p=period();
+      if(p>0 && track.scrollLeft >= p){ track.scrollLeft -= p; }   // reinicia sin salto visible
+    }
+    requestAnimationFrame(loop);
+  }
+  if(!reduce) requestAnimationFrame(loop);
 })();
 </script>
 </body>
