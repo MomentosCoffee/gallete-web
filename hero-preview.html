@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galleté — Hero split (preview)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Archivo:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#FC82BD; --pink-soft:#FFE3F1; --pink-bg:#FFF1F8;
+  --wine:#6F0021; --wine-soft:#9A2447; --matcha:#B7B424; --matcha-deep:#8F8D17;
+  --cream:#EFDFCB; --cream-bg:#FBFAF7; --paper:#FFFFFF; --ink:#3A0A1B; --muted:#8A6470; --ring:#DBDFE3;
+  --font-display:'Fredoka',system-ui,sans-serif;
+  --font-impact:'Archivo','Fredoka',sans-serif;
+  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);color:var(--wine);-webkit-font-smoothing:antialiased;background:var(--paper)}
+.pv-note{background:var(--wine);color:var(--cream);font-family:var(--font-display);font-weight:600;text-align:center;padding:9px 16px;font-size:.86rem}
+.pv-note b{color:#fff}
+
+/* ===== HERO SPLIT ===== */
+.hero{display:grid;grid-template-columns:1.02fr 1fr;min-height:calc(100vh - 38px)}
+
+/* izquierda: texto sobre fondo suave */
+.hero-left{display:flex;flex-direction:column;justify-content:center;gap:22px;
+  padding:clamp(28px,5vw,76px);
+  background:radial-gradient(120% 120% at 0% 0%, var(--pink-bg) 0%, var(--paper) 70%)}
+.eyebrow{font-family:var(--font-display);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;color:var(--pink)}
+.hero h1{font-family:var(--font-display);font-weight:700;color:var(--wine);line-height:1.02;letter-spacing:-.01em;font-size:clamp(44px,6vw,82px)}
+.hero h1 .pink{color:var(--pink)}
+.hero h1 .matcha{color:var(--matcha-deep)}
+.hero .sub{max-width:440px;font-size:1.1rem;line-height:1.45;color:var(--ink)}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:4px}
+.btn{font-family:var(--font-display);font-weight:600;font-size:1rem;border:none;cursor:pointer;border-radius:999px;padding:15px 28px;transition:transform .16s var(--ease-out),box-shadow .2s var(--ease-out),background .2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--pink);color:var(--wine);box-shadow:0 10px 22px -10px rgba(252,130,189,.9)}
+.btn-primary:hover{background:#ff6fb4;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--wine);border:2px solid var(--wine)}
+.btn-ghost:hover{background:var(--wine);color:var(--cream)}
+.mini-tags{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--font-display);font-weight:600;color:var(--wine);opacity:.85;font-size:.95rem}
+
+/* derecha: galleta a sangre sobre blanco limpio */
+.hero-right{position:relative;background:var(--paper);overflow:hidden}
+/* brillo sutil en tono de marca (respira) */
+.glow{position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(42% 42% at 52% 46%, rgba(252,130,189,.30) 0%, transparent 60%),
+    radial-gradient(50% 50% at 50% 52%, rgba(183,180,36,.14) 0%, transparent 65%);
+  animation:breathe 6.5s ease-in-out infinite}
+/* galleta: crossfade A/B + flote sutil */
+.cookie{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;animation:float 7.5s ease-in-out infinite}
+.cookie img{position:absolute;width:98%;max-width:760px;aspect-ratio:1;object-fit:contain;
+  opacity:0;transition:opacity .8s var(--ease-out);filter:drop-shadow(0 30px 44px rgba(111,0,33,.16))}
+.cookie img.is-on{opacity:1}
+/* badge fresh today encima */
+.fresh{position:absolute;top:clamp(20px,4vw,46px);right:clamp(20px,4vw,46px);
+  background:var(--matcha);color:#fff;font-family:var(--font-display);font-weight:700;text-align:center;line-height:1.05;
+  width:104px;height:104px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  transform:rotate(-12deg);box-shadow:0 12px 26px -12px rgba(111,0,33,.5);font-size:1.1rem;text-transform:lowercase;z-index:2}
+
+@keyframes breathe{0%,100%{opacity:.65;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* responsive: apila, imagen arriba a sangre */
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-right{order:-1;min-height:64vh}
+  .hero-left{padding:34px 24px 44px}
+  .cookie img{width:78%}
+}
+@media (prefers-reduced-motion:reduce){
+  .glow,.cookie{animation:none}
+  .cookie img{transition:opacity .3s ease}
+}
+</style>
+</head>
+<body>
+
+<div class="pv-note">👀 <b>PREVIEW del hero</b> — pantalla dividida · galleta a sangre en blanco · brillo/flote muy sutil. El sitio real NO está tocado.</div>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="eyebrow">Miami · South Florida · Farmers Markets</p>
+    <h1>Cookies that <span class="pink">ooze</span>. Matcha that <span class="matcha">hits</span>.</h1>
+    <p class="sub">Warm cookies, real ceremonial matcha, and the little moments you end up remembering — fresh at the market near you. We'll save you a cookie; you bring the conversation. 🐻</p>
+    <div class="cta">
+      <a href="#" class="btn btn-primary">Shop the drop</a>
+      <a href="#" class="btn btn-ghost">Find us this week →</a>
+    </div>
+    <div class="mini-tags">
+      <span>⭐ Loved at FIU &amp; Boynton Beach</span>
+      <span>🍵 Ceremonial-grade matcha</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="glow"></div>
+    <div class="cookie">
+      <img class="hero-slide is-on" src="assets/img/hero-a.jpg" alt="Galleté Nutella cookie">
+      <img class="hero-slide" src="assets/img/hero-b.jpg" alt="Galleté Nutella cookie, gooey inside">
+    </div>
+    <div class="fresh">fresh<br>today</div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var slides=document.querySelectorAll('.cookie img');
+  if(slides.length<2) return;
+  var i=0;
+  setInterval(function(){
+    if(document.hidden) return;
+    slides[i].classList.remove('is-on');
+    i=(i+1)%slides.length;
+    slides[i].classList.add('is-on');
+  },3000);
+})();
+</script>
+</body>
+</html>
