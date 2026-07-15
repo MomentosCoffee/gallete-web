@@ -340,7 +340,7 @@
       </div>
       <div class="hiw-lead-side">
         <p>
-          <span data-en="Built for the antojo — thick, gooey, fold-in-half. Three little steps from the market to your hands." data-es="Hechas para el antojo — gruesas, derretidas por dentro, se parten a la mitad. Tres pasitos del market a tus manos.">Built for the antojo — thick, gooey, fold-in-half. Three little steps from the market to your hands.</span>
+          <span data-en="Built for the <em>antojo</em> — thick, gooey, fold-in-half. Three little steps from the market to your hands." data-es="Hechas para el antojo — gruesas, derretidas por dentro, se parten a la mitad. Tres pasitos del market a tus manos.">Built for the <em>antojo</em> — thick, gooey, fold-in-half. Three little steps from the market to your hands.</span>
           <span class="sig" data-en="we got you 🐻" data-es="te tenemos 🐻">we got you 🐻</span>
         </p>
       </div>
@@ -982,7 +982,7 @@ const MARKETS = [
     document.documentElement.lang = lang;
     $$('[data-en]').forEach(el=>{
       const v = el.getAttribute('data-'+lang);
-      if(v!=null){ if(/<br>/.test(v)) el.innerHTML=v; else el.textContent=v; }
+      if(v!=null){ if(/<[a-z]/i.test(v)) el.innerHTML=v; else el.textContent=v; }
     });
     const t=$('#langToggle'); t.classList.toggle('es', lang==='es');
     localStorage.setItem('gallete_lang', lang);
