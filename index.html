@@ -139,10 +139,7 @@
 <!--  HERO                                                          -->
 <!-- ============================================================= -->
 <section class="hero">
-  <div class="hero-blob blob-1" aria-hidden="true"></div>
-  <div class="hero-blob blob-2" aria-hidden="true"></div>
-
-  <div class="container hero-grid">
+  <div class="hero-grid">
     <div class="hero-copy">
       <span class="eyebrow" data-en="Miami · South Florida · Farmers Markets" data-es="Miami · South Florida · Farmers Markets">Miami · South Florida · Farmers Markets</span>
       <h1 class="hero-h1">
@@ -165,7 +162,8 @@
     </div>
 
     <div class="hero-visual">
-      <!-- HERO: alterna entre galleta entera y partida cada 3s -->
+      <div class="hero-glow" aria-hidden="true"></div>
+      <!-- HERO: alterna entre galleta entera y partida cada 3s (a sangre en blanco) -->
       <div class="hero-photo hero-swap">
         <img class="hero-slide is-on" src="assets/img/hero-a.jpg" alt="Galleté Nutella cookie" fetchpriority="high">
         <img class="hero-slide" src="assets/img/hero-b.jpg" alt="Galleté Nutella cookie, gooey inside" fetchpriority="high">
@@ -712,24 +710,29 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .mobile-drawer.open{display:flex}
 
 /* ---- hero ---- */
-.hero{position:relative;background:linear-gradient(180deg,var(--pink-bg) 0%,var(--cream-bg) 100%);overflow:hidden;padding:clamp(40px,7vw,80px) 0 clamp(50px,8vw,90px)}
-.hero-blob{position:absolute;border-radius:50%;filter:blur(10px);opacity:.55;z-index:0}
+.hero{position:relative;overflow:hidden;padding:0;background:radial-gradient(72% 92% at -8% -12%, var(--pink-bg) 0%, transparent 44%), var(--paper)}
+.hero-blob{display:none}
+.hero-glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(42% 42% at 54% 46%, rgba(252,130,189,.26) 0%, transparent 60%),radial-gradient(52% 52% at 50% 52%, rgba(183,180,36,.12) 0%, transparent 66%);animation:hero-breathe 6.5s ease-in-out infinite}
+@keyframes hero-breathe{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+@keyframes hero-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .blob-1{width:340px;height:340px;background:var(--pink-soft);top:-80px;right:-60px}
 .blob-2{width:260px;height:260px;background:#EAF0C2;bottom:-90px;left:-70px}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,64px);align-items:center}
-.hero-h1{font-size:clamp(2.6rem,7.5vw,4.7rem);letter-spacing:-.02em;margin:6px 0 18px}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.04fr 1fr;align-items:stretch;min-height:min(82vh,760px)}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(40px,6vw,72px) clamp(24px,4vw,56px) clamp(40px,6vw,72px) calc(max((100vw - var(--maxw))/2, 0px) + clamp(18px,5vw,40px))}
+.hero-h1{font-size:clamp(2.6rem,7.5vw,4.7rem);letter-spacing:-.02em;margin:6px 0 16px}
 .hero-h1 em{font-style:normal;color:var(--pink)}
 .hero-h1 em.green{color:var(--matcha-deep)}
 .hero-sub{font-size:clamp(1.05rem,2.4vw,1.25rem);color:var(--muted);max-width:46ch}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin:28px 0 22px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0 20px}
 .hero-trust{display:flex;flex-wrap:wrap;gap:18px;font-size:.9rem;font-weight:600;color:var(--wine)}
-.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
-.hero-photo{width:100%;aspect-ratio:4/5;border-radius:var(--r-lg);box-shadow:var(--shadow)}
-.hero-swap{position:relative;overflow:hidden}
-.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s var(--ease-out)}
+/* panel derecho: galleta a sangre sobre blanco continuo */
+.hero-visual{position:relative;overflow:hidden}
+.hero-photo{position:absolute;inset:0;z-index:1;border-radius:0;box-shadow:none;width:auto;aspect-ratio:auto;animation:hero-float 7.5s ease-in-out infinite}
+.hero-swap{position:absolute;overflow:visible}
+.hero-slide{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:94%;max-width:720px;height:auto;aspect-ratio:1;object-fit:contain;opacity:0;transition:opacity .8s var(--ease-out)}
 .hero-slide.is-on{opacity:1}
-@media (prefers-reduced-motion:reduce){.hero-slide{transition:opacity .3s ease}}
-.hero-badge{position:absolute;top:-18px;right:-10px;background:var(--matcha);color:#fff;font-family:var(--font-display);font-weight:700;text-align:center;line-height:1.05;width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);box-shadow:var(--shadow-sm);font-size:1.05rem;text-transform:lowercase}
+.hero-badge{position:absolute;z-index:2;top:clamp(20px,4vw,44px);right:clamp(20px,4vw,44px);background:var(--matcha);color:#fff;font-family:var(--font-display);font-weight:700;text-align:center;line-height:1.05;width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);box-shadow:var(--shadow-sm);font-size:1.05rem;text-transform:lowercase}
 
 /* ---- photo slots (placeholders until real photos dropped in) ---- */
 .photo-slot{position:relative;background:
@@ -877,9 +880,10 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 @media(max-width:860px){
   .nav-links{display:none}
   .menu-toggle{display:flex}
-  .hero-grid{grid-template-columns:1fr;gap:48px}
-  .hero-visual{order:-1}
-  .hero-photo{aspect-ratio:5/4;max-width:420px;margin:0 auto}
+  .hero-grid{grid-template-columns:1fr;min-height:0}
+  .hero-visual{order:-1;min-height:56vh}
+  .hero-copy{padding:30px clamp(18px,5vw,40px) 42px}
+  .hero-slide{width:72%;max-width:400px}
   .about-grid{grid-template-columns:1fr;gap:48px}
   .about-visual{max-width:420px;margin:0 auto}
   .trio{grid-template-columns:1fr}
@@ -891,7 +895,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 @media(max-width:560px){
   .nav-links{display:none}
   .hero-cta .btn{flex:1;text-align:center}
-  .hero-badge{width:78px;height:78px;font-size:.85rem}
+  .hero-badge{width:74px;height:74px;font-size:.82rem;top:14px;right:14px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;scroll-behavior:auto!important;transition:none!important}
