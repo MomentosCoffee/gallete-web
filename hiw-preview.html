@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Galleté — How it works (preview de estilo)</title>
+<title>Galleté — How it works (preview de estilo + scroll)</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Archivo:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0&display=block" rel="stylesheet">
 <style>
 :root{
   --pink:#FC82BD; --pink-soft:#FFE3F1; --pink-bg:#FFF1F8;
@@ -18,81 +19,107 @@
   --font-display:'Fredoka',system-ui,sans-serif;
   --font-impact:'Archivo','Fredoka',sans-serif;
   --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  /* Emil: curvas custom, no las débiles del navegador */
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out:cubic-bezier(0.77,0,0.175,1);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--wine);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+.material-symbols-rounded{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;line-height:1}
 
 /* preview banner */
-.pv-note{background:var(--wine);color:var(--cream);font-family:var(--font-display);font-weight:600;text-align:center;padding:10px 16px;font-size:.9rem}
+.pv-note{background:var(--wine);color:var(--cream);font-family:var(--font-display);font-weight:600;text-align:center;padding:11px 16px;font-size:.9rem;display:flex;gap:8px;align-items:center;justify-content:center}
 .pv-note b{color:#fff}
+.pv-spacer{height:58vh;display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:var(--font-display);font-weight:600;gap:8px;opacity:.7}
 
-/* ============ HOW IT WORKS — estilo blob/display ============ */
-.hiw{position:relative;padding:48px 0 70px;overflow:hidden;background:
+/* ============ HOW IT WORKS — estilo blob + scroll ============ */
+.hiw{position:relative;padding:64px 0 90px;overflow:hidden;background:
    radial-gradient(120% 90% at 85% 0%, var(--pink-bg) 0%, transparent 55%),
    radial-gradient(90% 80% at 0% 100%, #F4F7E4 0%, transparent 55%),
    var(--paper)}
 .hiw-wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
 
 /* headline row */
-.hiw-head{display:flex;justify-content:space-between;align-items:flex-end;gap:60px;margin-bottom:70px}
-.hiw-kicker{font-family:var(--font-display);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:.8rem;color:var(--pink);margin:0 0 14px}
+.hiw-head{display:flex;justify-content:space-between;align-items:flex-end;gap:60px;margin-bottom:72px}
+.hiw-kicker{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-display);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;color:var(--pink);margin:0 0 14px}
+.hiw-kicker .material-symbols-rounded{font-size:1.05rem}
 .hiw-title{margin:0;font-family:var(--font-impact);font-weight:900;line-height:.9;letter-spacing:-.04em;color:var(--wine);text-transform:lowercase;font-size:clamp(54px,10.5vw,118px)}
 .hiw-title .accent{color:var(--matcha)}
-.hiw-title .pinky{color:var(--pink)}
 .hiw-lead{max-width:360px;margin:0 0 12px}
 .hiw-lead p{margin:0;font-size:1.12rem;line-height:1.35;color:var(--ink)}
 .hiw-lead .sig{display:inline-block;margin-top:12px;font-family:var(--font-display);font-weight:700;color:var(--wine-soft)}
 
-/* blob cluster — compacto y traslapado */
+/* cluster */
 .hiw-cluster{position:relative;height:470px;max-width:920px;margin:0 auto}
-.blob{position:absolute;width:312px;aspect-ratio:1;box-shadow:0 26px 60px -30px rgba(111,0,33,.5);transition:transform .4s ease, box-shadow .4s ease;cursor:default}
-/* la forma (blob) va rotada, pero el texto adentro queda DERECHO */
-.blob .inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:46px 44px}
-.blob .step-n{font-family:var(--font-impact);font-weight:900;font-size:1.05rem;opacity:.5;margin-bottom:6px}
-.blob h3{margin:0 0 9px;font-family:var(--font-display);font-weight:700;font-size:1.42rem;line-height:1.05}
-.blob p{margin:0;font-family:var(--font-body);font-weight:500;font-size:.98rem;line-height:1.3}
+/* wrap = parallax (JS escribe translate3d aquí, NO tocamos rotación/hover) */
+.blob-wrap{position:absolute;opacity:0;transition:opacity .6s var(--ease-out);will-change:transform,opacity}
+.hiw-cluster.in .blob-wrap{opacity:1}
+.hiw-cluster.in .wrap-1{transition-delay:.04s}
+.hiw-cluster.in .wrap-2{transition-delay:.12s}
+.hiw-cluster.in .wrap-3{transition-delay:.20s}
+.wrap-1{left:0;top:44px}
+.wrap-2{left:50%;top:0;margin-left:-164px;z-index:2}
+.wrap-3{right:0;top:70px}
 
-.blob-1{left:0;top:44px;background:var(--pink-soft);color:var(--wine);
-  border-radius:47% 53% 58% 42% / 52% 44% 56% 48%;transform:rotate(-9deg)}
+.blob{width:312px;aspect-ratio:1;box-shadow:0 26px 60px -30px rgba(111,0,33,.5);transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out)}
+.blob .inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:44px 42px}
+.blob .ico{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.blob .ico .material-symbols-rounded{font-size:1.7rem}
+.blob .step-n{font-family:var(--font-impact);font-weight:900;font-size:.82rem;letter-spacing:.1em;opacity:.5;margin-bottom:4px}
+.blob h3{margin:0 0 8px;font-family:var(--font-display);font-weight:700;font-size:1.4rem;line-height:1.05}
+.blob p{margin:0;font-family:var(--font-body);font-weight:500;font-size:.96rem;line-height:1.3}
+
+.blob-1{background:var(--pink-soft);color:var(--wine);border-radius:47% 53% 58% 42% / 52% 44% 56% 48%;transform:rotate(-9deg)}
 .blob-1 .inner{transform:rotate(9deg)}
-.blob-2{left:50%;top:0;margin-left:-156px;z-index:2;width:328px;background:var(--matcha);color:#fff;
-  border-radius:63% 37% 45% 55% / 48% 62% 38% 52%;transform:rotate(5deg)}
+.blob-1 .ico{background:var(--pink);color:#fff}
+.blob-2{width:328px;background:var(--matcha);color:#fff;border-radius:63% 37% 45% 55% / 48% 62% 38% 52%;transform:rotate(5deg)}
 .blob-2 .inner{transform:rotate(-5deg)}
+.blob-2 .ico{background:rgba(255,255,255,.22);color:#fff}
 .blob-2 .step-n{opacity:.7}
-.blob-3{right:0;top:70px;background:var(--wine);color:var(--cream);
-  border-radius:42% 58% 52% 48% / 55% 46% 54% 45%;transform:rotate(11deg)}
+.blob-3{background:var(--wine);color:var(--cream);border-radius:42% 58% 52% 48% / 55% 46% 54% 45%;transform:rotate(11deg)}
 .blob-3 .inner{transform:rotate(-11deg)}
+.blob-3 .ico{background:var(--pink);color:var(--wine)}
 .blob-3 .step-n{opacity:.6}
 .blob-3 .tag{color:var(--pink)}
 .blob-3 a{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid var(--pink)}
 
-/* hover: se enderezan y crecen */
-.blob-1:hover{transform:rotate(-3deg) scale(1.05)}
-.blob-2:hover{transform:rotate(0deg) scale(1.05);z-index:3}
-.blob-3:hover{transform:rotate(4deg) scale(1.05);z-index:3}
+/* hover: solo en dispositivos con mouse (Emil) — se endereza + crece */
+@media (hover:hover) and (pointer:fine){
+  .blob-1:hover{transform:rotate(-3deg) scale(1.05)}
+  .blob-2:hover{transform:rotate(0deg) scale(1.05)}
+  .blob-3:hover{transform:rotate(4deg) scale(1.05)}
+  .blob:hover{box-shadow:0 34px 70px -28px rgba(111,0,33,.6)}
+}
 
-/* ---- responsive ---- */
+/* responsive: apilado, sin rotación, texto derecho */
 @media(max-width:900px){
   .hiw-head{flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:48px}
   .hiw-lead{margin-bottom:0}
   .hiw-cluster{height:auto;display:flex;flex-direction:column;align-items:center;gap:22px}
-  .blob{position:relative;left:auto;right:auto;top:auto;bottom:auto;margin:0;width:min(84vw,340px);transform:none!important}
-  .blob-2{margin-left:0}
+  .blob-wrap{position:relative;left:auto;right:auto;top:auto;margin:0;transform:none!important}
+  .blob{width:min(84vw,340px);transform:none!important}
   .blob .inner{transform:none!important}
+}
+
+/* Emil: reduced-motion = quitar movimiento, conservar opacidad */
+@media (prefers-reduced-motion:reduce){
+  .blob-wrap{transform:none!important;transition:opacity .3s ease}
+  .blob{transition:box-shadow .3s ease}
 }
 </style>
 </head>
 <body>
 
-<div class="pv-note">👀 <b>PREVIEW de estilo</b> — así se vería “How it works” con el look del prompt. El sitio real NO está tocado.</div>
+<div class="pv-note">👀 <b>PREVIEW de estilo + scroll</b> — Emil Kowalski polish · iconos Material · el sitio real NO está tocado.</div>
+
+<div class="pv-spacer"><span class="material-symbols-rounded">expand_more</span> baja para ver el movimiento de las burbujas</div>
 
 <section class="hiw">
   <div class="hiw-wrap">
 
-    <!-- headline row -->
     <div class="hiw-head">
       <div>
-        <p class="hiw-kicker">How it works</p>
+        <p class="hiw-kicker"><span class="material-symbols-rounded">bolt</span> How it works</p>
         <h1 class="hiw-title">from&nbsp;craving<br><span class="accent">to&nbsp;cookie.</span></h1>
       </div>
       <div class="hiw-lead">
@@ -100,36 +127,84 @@ body{margin:0;background:var(--paper);color:var(--wine);font-family:var(--font-b
       </div>
     </div>
 
-    <!-- blob cluster = los 3 pasos -->
     <div class="hiw-cluster">
-      <div class="blob blob-1">
-        <div class="inner">
-          <span class="step-n">01</span>
-          <h3>Order in seconds</h3>
-          <p>Add your faves and check out on WhatsApp or IG. No app, no drama.</p>
+      <div class="blob-wrap wrap-1" data-speed="26">
+        <div class="blob blob-1">
+          <div class="inner">
+            <div class="ico"><span class="material-symbols-rounded">bolt</span></div>
+            <span class="step-n">STEP 01</span>
+            <h3>Order in seconds</h3>
+            <p>Add your faves and check out on WhatsApp or IG. No app, no drama.</p>
+          </div>
         </div>
       </div>
 
-      <div class="blob blob-2">
-        <div class="inner">
-          <span class="step-n">02</span>
-          <h3>We confirm the spot</h3>
-          <p>Grab it at the next market 🐻 or local delivery across South Florida.</p>
+      <div class="blob-wrap wrap-2" data-speed="-16">
+        <div class="blob blob-2">
+          <div class="inner">
+            <div class="ico"><span class="material-symbols-rounded">storefront</span></div>
+            <span class="step-n">STEP 02</span>
+            <h3>We confirm the spot</h3>
+            <p>Grab it at the next market 🐻 or local delivery across South Florida.</p>
+          </div>
         </div>
       </div>
 
-      <div class="blob blob-3">
-        <div class="inner">
-          <span class="step-n">03</span>
-          <h3>Break it. Share it.</h3>
-          <p class="tag">Fold it, watch it ooze, take the pic.</p>
-          <p style="margin-top:8px">Tag <a href="https://instagram.com/gallete_co">@gallete_co</a> — we always repost 🤎</p>
+      <div class="blob-wrap wrap-3" data-speed="34">
+        <div class="blob blob-3">
+          <div class="inner">
+            <div class="ico"><span class="material-symbols-rounded">photo_camera</span></div>
+            <span class="step-n">STEP 03</span>
+            <h3>Break it. Share it.</h3>
+            <p class="tag">Fold it, watch it ooze, take the pic.</p>
+            <p style="margin-top:7px">Tag <a href="https://instagram.com/gallete_co">@gallete_co</a> — we always repost 🤎</p>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 </section>
+
+<div class="pv-spacer"><span class="material-symbols-rounded">expand_less</span> sube y baja para sentir el parallax</div>
+
+<script>
+(function(){
+  var cluster=document.querySelector('.hiw-cluster');
+  if(!cluster) return;
+  var wraps=[].slice.call(cluster.querySelectorAll('.blob-wrap'));
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Entrada: revela una vez cuando aparece (opacidad, con stagger via CSS)
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ cluster.classList.add('in'); io.disconnect(); } });
+    },{threshold:.2});
+    io.observe(cluster);
+  } else { cluster.classList.add('in'); }
+
+  if(reduce) return; // sin parallax si el usuario pide menos movimiento
+
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var r=cluster.getBoundingClientRect();
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    // Fallback de entrada: si por algo el observer no disparó, revélalo al entrar en vista.
+    if(!cluster.classList.contains('in') && r.top < vh*0.9 && r.bottom > 0){ cluster.classList.add('in'); }
+    var delta=((r.top+r.height/2)-vh/2)/vh; // ~ -1..1 según posición en viewport
+    for(var i=0;i<wraps.length;i++){
+      var s=parseFloat(wraps[i].getAttribute('data-speed'))||0;
+      // Solo transform (GPU). translate3d fuerza aceleración por hardware.
+      wraps[i].style.transform='translate3d(0,'+(delta*s).toFixed(1)+'px,0)';
+    }
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll,{passive:true});
+  update();
+})();
+</script>
 
 </body>
 </html>
