@@ -24,12 +24,13 @@ body{font-family:var(--font-body);color:var(--wine);-webkit-font-smoothing:antia
 .pv-note b{color:#fff}
 
 /* ===== HERO SPLIT ===== */
-.hero{display:grid;grid-template-columns:1.02fr 1fr;min-height:calc(100vh - 38px)}
+/* un solo fondo continuo (sin costura en el centro): blanco + rosa suave arriba-izquierda */
+.hero{display:grid;grid-template-columns:1.02fr 1fr;min-height:calc(100vh - 38px);
+  background:radial-gradient(85% 105% at -5% -5%, var(--pink-bg) 0%, transparent 42%), var(--paper)}
 
-/* izquierda: texto sobre fondo suave */
+/* izquierda: texto (fondo transparente para no crear línea) */
 .hero-left{display:flex;flex-direction:column;justify-content:center;gap:22px;
-  padding:clamp(28px,5vw,76px);
-  background:radial-gradient(120% 120% at 0% 0%, var(--pink-bg) 0%, var(--paper) 70%)}
+  padding:clamp(28px,5vw,76px);background:transparent}
 .eyebrow{font-family:var(--font-display);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;color:var(--pink)}
 .hero h1{font-family:var(--font-display);font-weight:700;color:var(--wine);line-height:1.02;letter-spacing:-.01em;font-size:clamp(44px,6vw,82px)}
 .hero h1 .pink{color:var(--pink)}
@@ -45,7 +46,7 @@ body{font-family:var(--font-body);color:var(--wine);-webkit-font-smoothing:antia
 .mini-tags{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--font-display);font-weight:600;color:var(--wine);opacity:.85;font-size:.95rem}
 
 /* derecha: galleta a sangre sobre blanco limpio */
-.hero-right{position:relative;background:var(--paper);overflow:hidden}
+.hero-right{position:relative;background:transparent;overflow:hidden}
 /* brillo sutil en tono de marca (respira) */
 .glow{position:absolute;inset:0;pointer-events:none;
   background:
@@ -55,7 +56,7 @@ body{font-family:var(--font-body);color:var(--wine);-webkit-font-smoothing:antia
 /* galleta: crossfade A/B + flote sutil */
 .cookie{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;animation:float 7.5s ease-in-out infinite}
 .cookie img{position:absolute;width:98%;max-width:760px;aspect-ratio:1;object-fit:contain;
-  opacity:0;transition:opacity .8s var(--ease-out);filter:drop-shadow(0 30px 44px rgba(111,0,33,.16))}
+  opacity:0;transition:opacity .8s var(--ease-out)}
 .cookie img.is-on{opacity:1}
 /* badge fresh today encima */
 .fresh{position:absolute;top:clamp(20px,4vw,46px);right:clamp(20px,4vw,46px);
