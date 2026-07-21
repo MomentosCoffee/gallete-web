@@ -108,7 +108,7 @@
       <a href="#about"   data-en="About"     data-es="Nosotras">About</a>
       <a href="#menu"    data-en="Menu"       data-es="Menú">Menu</a>
       <a href="#findus"  data-en="Find Us"    data-es="Dónde estamos">Find Us</a>
-      <a href="#shop"    data-en="Shop"       data-es="Tienda">Shop</a>
+      <a href="#family"  data-en="Family"     data-es="Familia">Family</a>
     </nav>
 
     <div class="nav-actions">
@@ -129,7 +129,7 @@
     <a href="#about"  data-en="About"   data-es="Nosotras">About</a>
     <a href="#menu"   data-en="Menu"    data-es="Menú">Menu</a>
     <a href="#findus" data-en="Find Us" data-es="Dónde estamos">Find Us</a>
-    <a href="#shop"   data-en="Shop"    data-es="Tienda">Shop</a>
+    <a href="#family" data-en="Family"  data-es="Familia">Family</a>
   </nav>
 </header>
 
@@ -151,7 +151,7 @@
       <p class="hero-sub" data-en="Warm cookies, real ceremonial matcha, and the little moments you end up remembering. Fresh at the market near you. We'll save you a cookie; you bring the conversation. 🐻🤎" data-es="Galletas calienticas, matcha ceremonial de verdad, y esos momentitos que terminas recordando. Fresquitas en el market cerca de ti. Nosotras te guardamos una galleta; tú traes la conversación. 🐻🤎">Warm cookies, real ceremonial matcha, and the little moments you end up remembering. Fresh at the market near you. We'll save you a cookie; you bring the conversation. 🐻🤎</p>
 
       <div class="hero-cta">
-        <a href="#shop" class="btn btn-primary" data-en="Shop the drop" data-es="Ir a la tienda">Shop the drop</a>
+        <a href="#menu" class="btn btn-primary" data-en="See the menu" data-es="Ver el menú">See the menu</a>
         <a href="#findus" class="btn btn-ghost" data-en="Find us this week →" data-es="Dónde estamos esta semana →">Find us this week →</a>
       </div>
 
@@ -163,10 +163,12 @@
 
     <div class="hero-visual">
       <div class="hero-glow" aria-hidden="true"></div>
+      <!-- disco de otro tono detrás de la cookie (whiteboard: "ponerle un fondo de otro tono detrás de la cookie de Nutella") -->
+      <div class="hero-disc" aria-hidden="true"></div>
       <!-- HERO: alterna entre galleta entera y partida cada 3s (a sangre en blanco) -->
       <div class="hero-photo hero-swap">
-        <img class="hero-slide is-on" src="assets/img/hero-a.jpg" alt="Galleté Nutella cookie" fetchpriority="high">
-        <img class="hero-slide" src="assets/img/hero-b.jpg" alt="Galleté Nutella cookie, gooey inside" fetchpriority="high">
+        <img class="hero-slide is-on" src="assets/img/hero-a.png" alt="Galleté Nutella cookie" fetchpriority="high">
+        <img class="hero-slide" src="assets/img/hero-b.png" alt="Galleté Nutella cookie, gooey inside" fetchpriority="high">
       </div>
       <div class="hero-badge" data-en="fresh<br>today" data-es="recién<br>horneadas">fresh<br>today</div>
     </div>
@@ -236,7 +238,7 @@
           <h3 data-en="Ceremonial Matcha" data-es="Matcha Ceremonial">Ceremonial Matcha</h3>
           <p data-en="Lattes at the market + powder to take home. Vanilla, Banana Bread, Strawberry, Blueberry, Passion Fruit." data-es="Lattes en el market + polvo para llevar. Vanilla, Banana Bread, Strawberry, Blueberry, Passion Fruit.">Lattes at the market + powder to take home. Vanilla, Banana Bread, Strawberry, Blueberry, Passion Fruit.</p>
           <div class="trio-foot">
-            <span class="price" data-en="Lattes $8" data-es="Lattes $8">Lattes $8</span>
+            <span class="price" data-en="At the market" data-es="En el market">At the market</span>
             <button class="btn btn-sm add-btn" data-id="matcha" data-name="Ceremonial Matcha" data-en="Add" data-es="Agregar">Add</button>
           </div>
         </div>
@@ -325,6 +327,25 @@
 </section>
 
 <!-- ============================================================= -->
+<!--  SEASONAL DROP — la galleta de temporada. REMAKE la cambia cada mes
+     por el bot (pedido de Valeria). Para actualizar: cambiar el texto y
+     dejar la foto en assets/img/seasonal.jpg y aparece sola.            -->
+<!-- ============================================================= -->
+<section class="section seasonal" id="seasonal">
+  <div class="container seasonal-in">
+    <div class="seasonal-photo photo-slot" data-slot="seasonal">
+      <span class="slot-label">📷 galleta de temporada<br><small>assets/img/seasonal.jpg</small></span>
+    </div>
+    <div class="seasonal-copy">
+      <span class="seasonal-tag" data-en="✨ This month's drop" data-es="✨ El drop del mes">✨ This month's drop</span>
+      <h2 class="section-title" data-en="Our seasonal cookie" data-es="Nuestra galleta de temporada">Our seasonal cookie</h2>
+      <p data-en="A rotating flavor we bake just for the season. Here this month, gone the next — ask us what's dropping." data-es="Un sabor rotativo que horneamos solo para la temporada. Este mes está, el próximo no — pregúntanos cuál cae.">A rotating flavor we bake just for the season. Here this month, gone the next — ask us what's dropping.</p>
+      <a href="#findus" class="btn btn-primary" data-en="Find us this week" data-es="Dónde estamos esta semana">Find us this week</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
 <!--  HOW IT WORKS (fulfillment — clave por ser itinerante)         -->
 <!-- ============================================================= -->
 <section class="section how" id="how">
@@ -394,6 +415,11 @@
       <div class="about-photo photo-slot" data-slot="about">
         <span class="slot-label">📷 you at the market<br><small>assets/img/about.jpg</small></span>
       </div>
+      <!-- Gally se presenta (pedido de Valeria en el whiteboard: "no aparece Gally ni se comunica quién es") -->
+      <figure class="gally-meet">
+        <span class="gally-bubble" data-en="Hi! I'm Gally. I take quality control very seriously." data-es="¡Hola! Soy Gally. Me tomo el control de calidad muy en serio.">Hi! I'm Gally. I take quality control very seriously.</span>
+        <img src="assets/img/gally-wave.png" alt="Gally, the Galleté bear, waving" class="gally-img" loading="lazy">
+      </figure>
     </div>
     <div class="about-copy">
       <span class="eyebrow" data-en="Hi, we're Galleté" data-es="Hola, somos Galleté">Hi, we're Galleté</span>
@@ -428,28 +454,23 @@
 </section>
 
 <!-- ============================================================= -->
-<!--  SHOP — full grid, viral first                                 -->
+<!--  GALLETÉ FAMILY — carrusel de fotos reales (reemplaza Shop, pedido de Valeria en el whiteboard) + llamado a etiquetar -->
 <!-- ============================================================= -->
-<section class="section shop" id="shop">
+<section class="section family" id="family">
   <div class="container">
-    <div class="section-head">
-      <h2 class="section-title" data-en="Shop the good stuff" data-es="Compra lo bueno">Shop the good stuff</h2>
-      <p class="section-lead" data-en="Tap, add, check out in seconds. Pick up at the next market or ask us about delivery." data-es="Toca, agrega y paga en segundos. Recoge en el próximo market o pregúntanos por delivery.">Tap, add, check out in seconds. Pick up at the next market or ask us about delivery.</p>
+    <div class="section-head center">
+      <h2 class="section-title" data-en="The Galleté family 🐻" data-es="La familia Galleté 🐻">The Galleté family 🐻</h2>
+      <p class="section-lead" data-en="Real people, real markets, real cookies. This is what a Galleté moment looks like." data-es="Gente real, markets reales, galletas reales. Así se ve un momento Galleté.">Real people, real markets, real cookies. This is what a Galleté moment looks like.</p>
     </div>
-
-    <div class="shop-grid" id="shopGrid"><!-- injected by JS from PRODUCTS config --></div>
   </div>
-</section>
-
-<!-- ============================================================= -->
-<!--  SOCIAL PROOF                                                  -->
-<!-- ============================================================= -->
-<section class="section reviews">
-  <div class="container">
-    <h2 class="section-title center" data-en="Tag us &amp; get featured 🐻" data-es="Etiquétanos y sal en la web 🐻">Tag us &amp; get featured 🐻</h2>
-    <p style="text-align:center;max-width:620px;margin:0 auto 26px;color:var(--wine);opacity:.9" data-en="Snapped a gooey cookie or a matcha moment? Tag @gallete_co and the best ones live right here." data-es="¿Una foto de una galleta derretida o un momento matcha? Etiqueta a @gallete_co y las mejores salen aquí.">Snapped a gooey cookie or a matcha moment? Tag @gallete_co and the best ones live right here.</p>
-    <div style="text-align:center"><a href="https://www.instagram.com/gallete_co" target="_blank" rel="noopener" class="btn btn-primary" data-en="Follow @gallete_co" data-es="Síguenos @gallete_co">Follow @gallete_co</a></div>
-    <p style="text-align:center;max-width:560px;margin:16px auto 0;color:var(--wine);opacity:.75;font-size:.95rem" data-en="Follow us there for drops and market days. To order, always use the site 🍪" data-es="Síguenos allá para los drops y los días de market. Para pedir, usa siempre la web 🍪">Follow us there for drops and market days. To order, always use the site 🍪</p>
+  <!-- carrusel full-bleed que se desliza solo (pausa al pasar el mouse/tocar) -->
+  <div class="fam-rail" id="famRail" role="region" aria-label="Galleté family photos">
+    <div class="fam-track" id="famTrack"><!-- fotos inyectadas por JS --></div>
+  </div>
+  <div class="container center">
+    <p class="fam-cta-line" data-en="Snapped a gooey cookie or a matcha moment? Tag @gallete_co and you might land right here." data-es="¿Una foto de una galleta derretida o un momento matcha? Etiqueta a @gallete_co y podrías salir aquí.">Snapped a gooey cookie or a matcha moment? Tag @gallete_co and you might land right here.</p>
+    <a href="https://www.instagram.com/gallete_co" target="_blank" rel="noopener" class="btn btn-primary" data-en="Follow @gallete_co" data-es="Síguenos @gallete_co">Follow @gallete_co</a>
+    <p class="fam-note" data-en="Follow us for drops and market days. To order, just ask us 🍪" data-es="Síguenos para los drops y los días de market. Para pedir, solo escríbenos 🍪">Follow us for drops and market days. To order, just ask us 🍪</p>
   </div>
 </section>
 
@@ -484,7 +505,7 @@
       <a href="#about"  data-en="About"    data-es="Nosotras">About</a>
       <a href="#menu"   data-en="Menu"     data-es="Menú">Menu</a>
       <a href="#findus" data-en="Find Us"  data-es="Dónde estamos">Find Us</a>
-      <a href="#shop"   data-en="Shop"     data-es="Tienda">Shop</a>
+      <a href="#family" data-en="Family"   data-es="Familia">Family</a>
     </nav>
     <div class="footer-col">
       <h4 data-en="Say hi" data-es="Escríbenos">Say hi</h4>
@@ -568,7 +589,8 @@
   --pink:#FC82BD; --pink-soft:#FFE3F1; --pink-bg:#FFF1F8;
   --wine:#6F0021; --wine-soft:#9A2447;
   --matcha:#B7B424; --matcha-deep:#8F8D17;
-  --cream:#EFDFCB; --cream-bg:#FBFAF7; --paper:#FFFFFF;
+  /* warm ivory #EFDECA = tono de fondo que pidió Valeria en el whiteboard (antes casi-blanco #FBFAF7) */
+  --cream:#EFDFCB; --cream-bg:#EFDECA; --paper:#FFFFFF;
   --ink:#3A0A1B; --muted:#8A6470;
   --ring:#DBDFE3;
   --maxw:1140px;
@@ -765,6 +787,10 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .hero-trust{display:flex;flex-wrap:wrap;gap:18px;font-size:.9rem;font-weight:600;color:var(--wine)}
 /* panel derecho: galleta a sangre sobre blanco continuo */
 .hero-visual{position:relative;overflow:hidden}
+/* disco rosa suave detrás de la cookie: la separa del fondo warm ivory */
+.hero-disc{position:absolute;top:50%;left:50%;width:min(78%,560px);aspect-ratio:1;transform:translate(-50%,-50%);
+  border-radius:50%;background:radial-gradient(circle at 50% 42%, var(--pink-soft) 0%, #FFD6EA 55%, #FCC0DF 100%);
+  z-index:0;box-shadow:0 30px 70px -30px rgba(252,130,189,.6)}
 .hero-photo{position:absolute;inset:0;z-index:1;border-radius:0;box-shadow:none;width:auto;aspect-ratio:auto;animation:hero-float 7.5s ease-in-out infinite}
 .hero-swap{position:absolute;overflow:visible}
 .hero-slide{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:94%;max-width:720px;height:auto;aspect-ratio:1;object-fit:contain;opacity:0;transition:opacity .8s var(--ease-out)}
@@ -802,6 +828,18 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .about{background:var(--cream)}
 .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(30px,5vw,64px);align-items:center}
 .about-visual{position:relative}
+/* Gally saludando + globo, asomado en la esquina de la foto */
+.gally-meet{position:absolute;right:-10px;bottom:-26px;margin:0;width:clamp(120px,15vw,168px);z-index:3;filter:drop-shadow(0 10px 20px rgba(111,0,33,.22))}
+.gally-img{width:100%;height:auto;display:block}
+.gally-bubble{position:absolute;bottom:88%;right:44%;width:max-content;max-width:190px;
+  background:#fff;color:var(--wine);font-family:var(--font-display);font-weight:600;font-size:.82rem;line-height:1.3;
+  padding:10px 13px;border-radius:16px;border:2px solid var(--pink);box-shadow:var(--shadow-sm)}
+.gally-bubble::after{content:"";position:absolute;bottom:-9px;right:22px;width:14px;height:14px;background:#fff;
+  border-right:2px solid var(--pink);border-bottom:2px solid var(--pink);transform:rotate(45deg)}
+@media(max-width:760px){
+  .gally-meet{position:relative;right:auto;bottom:auto;margin:26px auto 0;width:150px}
+  .gally-bubble{right:36%}
+}
 .about-photo{aspect-ratio:4/5;border-radius:var(--r-lg);box-shadow:var(--shadow)}
 /* Stand en el market */
 .findus-photo{aspect-ratio:16/7;border-radius:var(--r-lg);box-shadow:var(--shadow);margin:0 0 32px}
@@ -825,25 +863,41 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .market-map{font-family:var(--font-display);font-weight:600;font-size:.92rem;border-bottom:2px solid currentColor;padding-bottom:2px}
 .findus-note{color:rgba(255,255,255,.7);font-size:.9rem;text-align:center;margin-top:30px;font-style:italic}
 
-/* ---- shop ---- */
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:clamp(16px,2.5vw,24px)}
-.shop-card{background:var(--paper);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid #f1e9e3;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
-.shop-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.shop-photo{aspect-ratio:1/1;position:relative}
-.shop-flag{position:absolute;top:12px;left:12px;background:var(--pink);color:var(--wine);font-family:var(--font-display);font-weight:700;font-size:.72rem;padding:5px 11px;border-radius:999px;box-shadow:var(--shadow-sm)}
-.shop-flag.green{background:var(--matcha);color:#fff}
-.shop-info{padding:18px;display:flex;flex-direction:column;flex:1}
-.shop-info h3{font-family:var(--font-impact);text-transform:uppercase;letter-spacing:.005em;line-height:1.05;font-size:1.2rem;margin-bottom:4px}
-.shop-info .desc{color:var(--muted);font-size:.86rem;flex:1;margin-bottom:14px}
-.shop-foot{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.shop-foot .price{font-size:1.15rem}
+/* ---- SEASONAL DROP (galleta de temporada, editable cada mes) ----
+   fondo VINO (no matcha): blanco sobre matcha #B7B424 daba ~1.9:1 y falla AA */
+.seasonal{background:var(--wine);color:#fff}
+.seasonal-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,52px);align-items:center}
+.seasonal-photo{aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);border:4px solid #fff}
+.seasonal-tag{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.04em;
+  background:var(--matcha);color:var(--wine);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.seasonal-copy .section-title{color:#fff}
+.seasonal-copy p{color:rgba(255,255,255,.92);margin-bottom:20px;max-width:44ch}
+.seasonal-copy .btn-primary{background:var(--matcha);color:var(--wine)}
+@media (hover:hover) and (pointer:fine){.seasonal-copy .btn-primary:hover{background:var(--cream)}}
+@media(max-width:760px){.seasonal-in{grid-template-columns:1fr;text-align:center}
+  .seasonal-copy p{margin-left:auto;margin-right:auto}.seasonal-photo{max-width:420px;margin:0 auto}}
 
-/* ---- reviews ---- */
-.reviews{background:var(--pink-bg)}
-.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:40px}
-.review{background:var(--paper);border-radius:var(--r);padding:28px;box-shadow:var(--shadow-sm);border:1px solid #f7e2ee}
-.review p{font-family:var(--font-display);font-weight:500;font-size:1.12rem;color:var(--wine);margin-bottom:14px}
-.review cite{font-style:normal;font-weight:600;color:var(--pink);font-size:.9rem}
+/* ---- GALLETÉ FAMILY (carrusel de fotos reales) ---- */
+.family{background:var(--pink-bg);overflow:hidden}
+.section-head.center{text-align:center}
+.fam-rail{position:relative;margin:38px 0 30px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+/* la tira se desliza sola; se duplica en el JS para el loop infinito */
+.fam-track{display:flex;gap:16px;width:max-content;padding:4px 0;animation:famScroll 60s linear infinite}
+.fam-rail:hover .fam-track{animation-play-state:paused}
+@keyframes famScroll{to{transform:translateX(-50%)}}
+.fam-ph{flex:0 0 auto;width:clamp(200px,24vw,270px);aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;
+  box-shadow:var(--shadow-sm);border:3px solid #fff;background:var(--pink-soft);position:relative;transition:transform .25s var(--ease-out)}
+.fam-ph img{width:100%;height:100%;object-fit:cover;display:block}
+@media (hover:hover) and (pointer:fine){.fam-ph:hover{transform:scale(1.03) rotate(-1deg)}}
+.fam-cta-line{max-width:560px;margin:0 auto 18px;color:var(--wine);opacity:.92;font-size:1.02rem}
+.fam-note{max-width:520px;margin:16px auto 0;color:var(--wine);opacity:.72;font-size:.92rem}
+@media(prefers-reduced-motion:reduce){
+  .fam-track{animation:none;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;width:100%;padding-bottom:14px}
+  .fam-ph{scroll-snap-align:center}
+  .fam-rail{-webkit-mask-image:none;mask-image:none}
+}
 
 /* ---- club ---- */
 .club{background:var(--matcha);text-align:center}
@@ -981,19 +1035,20 @@ const PRODUCTS = [
 
 /* MERCADOS — calendario itinerante. day=etiqueta del día. live:true marca el de esta semana.
    Mantenlo actualizado: agrega/borra objetos según dónde vayan a estar. */
+/* 3 MARKETS FIJOS confirmados por Valeria (whiteboard 21 jul). */
 const MARKETS = [
-  {live:false, day_en:"South Florida", day_es:"South Florida",
-   name:"FIU Farmers Market", where_en:"Florida International University, Miami",
-   where_es:"Florida International University, Miami", time:"Follow @gallete_co for dates",
-   map:"https://maps.google.com/?q=FIU+Farmers+Market+Miami"},
-  {live:false, day_en:"South Florida", day_es:"South Florida",
-   name:"Boynton Beach Market", where_en:"Boynton Beach, FL",
-   where_es:"Boynton Beach, FL", time:"Follow @gallete_co for dates",
-   map:"https://maps.google.com/?q=Boynton+Beach+Farmers+Market"},
-  {live:false, day_en:"Coming soon", day_es:"Muy pronto",
-   name:"Our Miami Cart 🛒", where_en:"Mobile cart launching across Miami",
-   where_es:"Carrito móvil llegando a Miami", time:"Follow @gallete_co",
-   map:"https://www.instagram.com/gallete_co"}
+  {live:false, day_en:"Every other Thursday", day_es:"Jueves de por medio",
+   name:"Florida International University", where_en:"FIU, Miami",
+   where_es:"FIU, Miami", time_en:"Every other Thursday", time_es:"Jueves de por medio",
+   map:"https://maps.google.com/?q=Florida+International+University+Miami"},
+  {live:false, day_en:"2nd Saturday monthly", day_es:"2º sábado del mes",
+   name:"Tanger Outlets Palm Beach", where_en:"Palm Beach, FL",
+   where_es:"Palm Beach, FL", time_en:"Second Saturday of every month", time_es:"Segundo sábado de cada mes",
+   map:"https://maps.google.com/?q=Tanger+Outlets+Palm+Beach"},
+  {live:false, day_en:"Every Sunday", day_es:"Cada domingo",
+   name:"Shops at Merrick Park", where_en:"Coral Gables, FL",
+   where_es:"Coral Gables, FL", time_en:"Every Sunday", time_es:"Cada domingo",
+   map:"https://maps.google.com/?q=Shops+at+Merrick+Park"}
 ];
 
 /* ===================================================================
@@ -1013,7 +1068,7 @@ const MARKETS = [
     });
     const t=$('#langToggle'); t.classList.toggle('es', lang==='es');
     localStorage.setItem('gallete_lang', lang);
-    renderShop(); renderMarkets(); renderCart(); applyPrices(); autoPhotos();
+    renderFamily(); renderMarkets(); renderCart(); applyPrices(); autoPhotos();
   }
   $('#langToggle').addEventListener('click',()=>{ lang = lang==='en'?'es':'en'; applyLang(); });
 
@@ -1031,27 +1086,14 @@ const MARKETS = [
   mt.addEventListener('click',()=>{const o=drawer.classList.toggle('open');mt.classList.toggle('open',o);mt.setAttribute('aria-expanded',o);});
   drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');mt.classList.remove('open');}));
 
-  /* ---------- SHOP grid ---------- */
-  function renderShop(){
-    const g=$('#shopGrid'); g.innerHTML='';
-    PRODUCTS.forEach(p=>{
-      const el=document.createElement('article'); el.className='shop-card';
-      el.innerHTML=`
-        <div class="shop-photo photo-slot clickable" data-slot="${p.id}" data-qv="${p.id}">
-          <span class="shop-flag ${p.flagGreen?'green':''}">${p['flag_'+lang]}</span>
-          <span class="slot-label">📷<br><small>assets/img/${p.id}.jpg</small></span>
-        </div>
-        <div class="shop-info">
-          <h3 class="clickable" data-qv="${p.id}">${p['name_'+lang]}</h3>
-          <p class="desc">${p['desc_'+lang]}</p>
-          <div class="shop-foot">
-            <span class="price">${priceLabel(p.price)}</span>
-            <button class="btn btn-sm btn-primary add-btn" data-id="${p.id}">${lang==='es'?'Agregar':'Add'}</button>
-          </div>
-        </div>`;
-      g.appendChild(el);
-    });
-    bindAdd();
+  /* ---------- GALLETÉ FAMILY (carrusel de fotos reales) ----------
+     12 fotos que mandó Valeria (optimizadas de HEIC a webp). Se duplican
+     para el loop infinito del CSS (translateX(-50%) recorre la 1ª copia). */
+  const FAMILY = Array.from({length:12},(_,i)=>`assets/img/fam-${String(i+1).padStart(2,'0')}.webp`);
+  function renderFamily(){
+    const t=$('#famTrack'); if(!t) return;
+    const foto=src=>`<div class="fam-ph"><img src="${src}" alt="Un momento Galleté en el market" loading="lazy"></div>`;
+    t.innerHTML = (FAMILY.concat(FAMILY)).map(foto).join('');
   }
 
   /* ---------- MARKETS ---------- */
@@ -1064,7 +1106,7 @@ const MARKETS = [
         <div class="market-day">${k['day_'+lang]}</div>
         <div class="market-name">${k.name}</div>
         <div class="market-where">${k['where_'+lang]}</div>
-        <div class="market-time">🕒 ${k.time}</div><br>
+        <div class="market-time">🕒 ${k['time_'+lang]}</div><br>
         <a class="market-map" href="${k.map}" target="_blank" rel="noopener">${lang==='es'?'Ver mapa →':'Get directions →'}</a>`;
       m.appendChild(el);
     });
@@ -1189,7 +1231,7 @@ const MARKETS = [
   $('#year').textContent='2026';
 
   /* ---------- init ---------- */
-  renderShop(); renderMarkets(); renderCart(); applyLang(); autoPhotos();
+  renderFamily(); renderMarkets(); renderCart(); applyLang(); autoPhotos();
 })();
 </script>
 <script>
