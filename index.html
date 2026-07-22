@@ -243,21 +243,18 @@
 
     <!-- Flavors gallery (real product photos) -->
     <div style="margin-top:46px">
-      <p style="font-family:var(--font-impact);text-transform:uppercase;letter-spacing:.005em;text-align:center;color:#6F0021;font-size:1.55rem;margin:0 0 24px" data-en="A flavor for every mood" data-es="Un sabor para cada mood">A flavor for every mood</p>
+      <p style="font-family:var(--font-impact);text-transform:uppercase;letter-spacing:.005em;text-align:center;color:#6F0021;font-size:1.55rem;margin:0 0 8px" data-en="A flavor for every mood" data-es="Un sabor para cada mood">A flavor for every mood</p>
+      <p style="text-align:center;color:#6F0021;opacity:.8;max-width:620px;margin:0 auto 24px" data-en="Some of the seasonal flavors we've dropped. They rotate, so catch your favorite while it's around." data-es="Algunas de nuestras galletas de temporada. Van rotando, así que atrapa tu favorita mientras esté.">Some of the seasonal flavors we've dropped. They rotate, so catch your favorite while it's around.</p>
       <div class="flavor-grid">
         <figure>
-          <div class="flavor-pic">
+          <div class="flavor-pic no-peek">
             <img class="whole" src="assets/img/flavor-oreo.jpg" alt="Oreo cookie" loading="lazy">
-            <img class="inside" src="assets/img/inside-oreo.jpg" alt="Oreo cookie split in half" loading="lazy">
-            <span class="peek" data-en="Peek inside" data-es="Ábrela">Peek inside</span>
           </div>
           <figcaption style="margin-top:10px;font-weight:700;color:#6F0021">Oreo</figcaption>
         </figure>
         <figure>
-          <div class="flavor-pic">
+          <div class="flavor-pic no-peek">
             <img class="whole" src="assets/img/flavor-chocochip.jpg" alt="Choco Chip cookie" loading="lazy">
-            <img class="inside" src="assets/img/inside-chocochip.jpg" alt="Choco Chip cookie split in half" loading="lazy">
-            <span class="peek" data-en="Peek inside" data-es="Ábrela">Peek inside</span>
           </div>
           <figcaption style="margin-top:10px;font-weight:700;color:#6F0021">Choco Chip</figcaption>
         </figure>
@@ -270,18 +267,14 @@
           <figcaption style="margin-top:10px;font-weight:700;color:#6F0021">Nutella</figcaption>
         </figure>
         <figure>
-          <div class="flavor-pic">
+          <div class="flavor-pic no-peek">
             <img class="whole" src="assets/img/flavor-smores.jpg" alt="S'mores cookie" loading="lazy">
-            <img class="inside" src="assets/img/inside-smores.jpg" alt="S'mores cookie split in half" loading="lazy">
-            <span class="peek" data-en="Peek inside" data-es="Ábrela">Peek inside</span>
           </div>
           <figcaption style="margin-top:10px;font-weight:700;color:#6F0021">S'mores</figcaption>
         </figure>
         <figure>
-          <div class="flavor-pic">
+          <div class="flavor-pic no-peek">
             <img class="whole" src="assets/img/flavor-mm.jpg" alt="M&amp;M's cookie" loading="lazy">
-            <img class="inside" src="assets/img/inside-mm.jpg" alt="M&amp;M's cookie split in half" loading="lazy">
-            <span class="peek" data-en="Peek inside" data-es="Ábrela">Peek inside</span>
           </div>
           <figcaption style="margin-top:10px;font-weight:700;color:#6F0021">M&amp;M's</figcaption>
         </figure>
@@ -714,6 +707,10 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .flavor-pic:hover .inside,.flavor-pic:focus-within .inside{opacity:1;transform:scale(1.04)}
 .flavor-pic .peek{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);background:rgba(111,0,33,.86);color:#fff;font-size:.64rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;opacity:1;transition:opacity .3s ease;pointer-events:none}
 .flavor-pic:hover .peek,.flavor-pic:focus-within .peek{opacity:0}
+/* no-peek: sabores que NO escurren (Oreo, Choco Chip, S'mores, M&M's).
+   Sin foto de interior real, solo se muestra la galleta entera (sin voltear). */
+.flavor-pic.no-peek{cursor:default}
+.flavor-pic.no-peek:hover .whole,.flavor-pic.no-peek:focus-within .whole{opacity:1;transform:none}
 /* ---- carrusel (matcha) ---- */
 .flavor-rail{overflow:hidden;width:100%;padding:6px 0 8px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%)}
 .flavor-track{display:flex;gap:26px;width:max-content;animation:flavscroll 38s linear infinite}
