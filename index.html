@@ -456,7 +456,7 @@
   <div class="fam-rail" id="famRail" role="region" aria-label="Galleté family photos">
     <div class="fam-track" id="famTrack"><!-- fotos inyectadas por JS --></div>
   </div>
-  <div class="container center">
+  <div class="container fam-outro">
     <p class="fam-cta-line" data-en="Snapped a gooey cookie or a matcha moment? Tag @gallete_co and you might land right here." data-es="¿Una foto de una galleta derretida o un momento matcha? Etiqueta a @gallete_co y podrías salir aquí.">Snapped a gooey cookie or a matcha moment? Tag @gallete_co and you might land right here.</p>
     <a href="https://www.instagram.com/gallete_co" target="_blank" rel="noopener" class="btn btn-primary" data-en="Follow @gallete_co" data-es="Síguenos @gallete_co">Follow @gallete_co</a>
     <p class="fam-note" data-en="Follow us for drops and market days. To order, just ask us 🍪" data-es="Síguenos para los drops y los días de market. Para pedir, solo escríbenos 🍪">Follow us for drops and market days. To order, just ask us 🍪</p>
@@ -891,8 +891,11 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
   box-shadow:var(--shadow-sm);border:3px solid #fff;background:var(--pink-soft);position:relative;transition:transform .25s var(--ease-out)}
 .fam-ph img{width:100%;height:100%;object-fit:cover;display:block}
 @media (hover:hover) and (pointer:fine){.fam-ph:hover{transform:scale(1.03) rotate(-1deg)}}
-.fam-cta-line{max-width:560px;margin:0 auto 18px;color:var(--wine);opacity:.92;font-size:1.02rem}
-.fam-note{max-width:520px;margin:16px auto 0;color:var(--wine);opacity:.72;font-size:.92rem}
+.family .section-head.center .section-lead{margin-left:auto;margin-right:auto}
+.fam-outro{display:flex;flex-direction:column;align-items:center;text-align:center}
+.fam-cta-line{max-width:560px;margin:0 0 4px;color:var(--wine);opacity:.92;font-size:1.02rem}
+.fam-outro .btn{margin:14px 0}
+.fam-note{max-width:520px;margin:4px 0 0;color:var(--wine);opacity:.72;font-size:.92rem}
 @media(prefers-reduced-motion:reduce){
   .fam-track{animation:none;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;width:100%;padding-bottom:14px}
   .fam-ph{scroll-snap-align:center}
@@ -1089,7 +1092,8 @@ const MARKETS = [
   /* ---------- GALLETÉ FAMILY (carrusel de fotos reales) ----------
      12 fotos que mandó Valeria (optimizadas de HEIC a webp). Se duplican
      para el loop infinito del CSS (translateX(-50%) recorre la 1ª copia). */
-  const FAMILY = Array.from({length:12},(_,i)=>`assets/img/fam-${String(i+1).padStart(2,'0')}.webp`);
+  // fam-01 se quitó: es la foto de las dos (mamá+hija), ya usada en el About. Quedan 11.
+  const FAMILY = Array.from({length:11},(_,i)=>`assets/img/fam-${String(i+2).padStart(2,'0')}.webp`);
   function renderFamily(){
     const t=$('#famTrack'); if(!t) return;
     const foto=src=>`<div class="fam-ph"><img src="${src}" alt="Un momento Galleté en el market" loading="lazy"></div>`;
