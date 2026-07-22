@@ -1110,7 +1110,7 @@ const MARKETS = [
         <div class="market-day">${k['day_'+lang]}</div>
         <div class="market-name">${k.name}</div>
         <div class="market-where">${k['where_'+lang]}</div>
-        <div class="market-time">🕒 ${k['time_'+lang]}</div><br>
+        <div class="market-time">${k['time_'+lang]}</div><br>
         <a class="market-map" href="${k.map}" target="_blank" rel="noopener">${lang==='es'?'Ver mapa →':'Get directions →'}</a>`;
       m.appendChild(el);
     });
