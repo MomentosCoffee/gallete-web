@@ -163,8 +163,8 @@
       <div class="hero-disc" aria-hidden="true"></div>
       <!-- HERO: alterna entre galleta entera y partida cada 3s (a sangre en blanco) -->
       <div class="hero-photo hero-swap">
-        <img class="hero-slide is-on" src="assets/img/hero-a.png" alt="Galleté Nutella cookie" fetchpriority="high">
-        <img class="hero-slide" src="assets/img/hero-b.png" alt="Galleté Nutella cookie, gooey inside" fetchpriority="high">
+        <img class="hero-slide is-on" src="assets/img/hero-a.webp" alt="Galleté Nutella cookie" fetchpriority="high">
+        <img class="hero-slide" src="assets/img/hero-b.webp" alt="Galleté Nutella cookie, gooey inside" fetchpriority="high">
       </div>
       <div class="hero-badge" data-en="fresh<br>today" data-es="recién<br>horneadas">fresh<br>today</div>
     </div>
@@ -765,10 +765,11 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .mobile-drawer.open{display:flex}
 
 /* ---- hero ---- */
-.hero{position:relative;overflow:hidden;padding:0;background:radial-gradient(72% 92% at -8% -12%, var(--pink-bg) 0%, transparent 44%), var(--paper)}
+/* hero sobre warm ivory (#EFDECA): antes tenía fondo blanco --paper y por eso el ivory no se veía */
+.hero{position:relative;overflow:hidden;padding:0;background:var(--cream-bg)}
 .hero-blob{display:none}
-.hero-glow{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(42% 42% at 54% 46%, rgba(252,130,189,.26) 0%, transparent 60%),radial-gradient(52% 52% at 50% 52%, rgba(183,180,36,.12) 0%, transparent 66%);animation:hero-breathe 6.5s ease-in-out infinite}
-@keyframes hero-breathe{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+/* el glow que respiraba se quitó: el fondo detrás de la cookie debe quedarse PLANO (pedido de Valeria) */
+.hero-glow{display:none}
 @keyframes hero-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .blob-1{width:340px;height:340px;background:var(--pink-soft);top:-80px;right:-60px}
 .blob-2{width:260px;height:260px;background:#EAF0C2;bottom:-90px;left:-70px}
@@ -783,10 +784,14 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .hero-trust{display:flex;flex-wrap:wrap;gap:18px;font-size:.9rem;font-weight:600;color:var(--wine)}
 /* panel derecho: galleta a sangre sobre blanco continuo */
 .hero-visual{position:relative;overflow:hidden}
-/* disco rosa suave detrás de la cookie: la separa del fondo warm ivory */
-.hero-disc{position:absolute;top:50%;left:50%;width:min(78%,560px);aspect-ratio:1;transform:translate(-50%,-50%);
-  border-radius:50%;background:radial-gradient(circle at 50% 42%, var(--pink-soft) 0%, #FFD6EA 55%, #FCC0DF 100%);
-  z-index:0;box-shadow:0 30px 70px -30px rgba(252,130,189,.6)}
+/* blob detrás de la cookie: MISMA forma y color plano que las burbujas de
+   "from craving to cookie" (.hbubble-1). Color sólido, sin degradado, sin
+   animación → el fondo se queda PLANO aunque la galleta se abra/cambie. */
+.hero-disc{position:absolute;top:50%;left:50%;width:min(80%,580px);aspect-ratio:1;
+  transform:translate(-50%,-50%) rotate(-9deg);
+  background:var(--pink-soft);
+  border-radius:47% 53% 58% 42%/52% 44% 56% 48%;
+  z-index:0;box-shadow:0 26px 60px -30px rgba(111,0,33,.35)}
 .hero-photo{position:absolute;inset:0;z-index:1;border-radius:0;box-shadow:none;width:auto;aspect-ratio:auto;animation:hero-float 7.5s ease-in-out infinite}
 .hero-swap{position:absolute;overflow:visible}
 .hero-slide{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:94%;max-width:720px;height:auto;aspect-ratio:1;object-fit:contain;opacity:0;transition:opacity .8s var(--ease-out)}
