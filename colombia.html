@@ -84,16 +84,19 @@
 <style id="co-hide-buy">
   .cart-btn, .add-btn, #checkoutBtn, .cart-drawer, .cart-overlay, .cart-close { display:none !important; }
   .co-soon{background:var(--matcha,#B7B424);color:#fff;text-align:center;font-family:var(--font-display,sans-serif);font-weight:600;font-size:.92rem;letter-spacing:.01em;padding:10px 16px;line-height:1.35}
-  .ctry-switch{position:fixed;left:16px;bottom:16px;z-index:1000;display:flex;gap:3px;align-items:center;background:rgba(255,255,255,.94);border:1px solid rgba(111,0,33,.12);border-radius:999px;padding:5px 6px;box-shadow:0 12px 30px -14px rgba(58,10,27,.5)}
-  .cs-opt{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.02rem;text-decoration:none;opacity:.5;transition:opacity .2s,background .2s}
+  .ctry-switch{position:fixed;right:16px;bottom:16px;z-index:1000;display:flex;gap:4px;align-items:center;background:#fff;border:1px solid rgba(111,0,33,.14);border-radius:999px;padding:6px 8px 6px 13px;box-shadow:0 16px 36px -14px rgba(58,10,27,.55)}
+  .ctry-switch .cs-lbl{font-family:'Fredoka',system-ui,sans-serif;font-weight:600;font-size:.72rem;color:#6F0021;opacity:.55;margin-right:2px;letter-spacing:.03em;text-transform:uppercase}
+  .cs-opt{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.18rem;text-decoration:none;opacity:.72;transition:opacity .2s,background .2s}
   .cs-opt.is-active{opacity:1;background:#F3F4DE;box-shadow:inset 0 0 0 2px #B7B424}
-  .cs-home{width:30px;height:34px;display:flex;align-items:center;justify-content:center;color:#6F0021;opacity:.6;font-size:1.05rem;text-decoration:none;border-left:1px solid rgba(111,0,33,.14);margin-left:2px}
+  .cs-home{width:32px;height:38px;display:flex;align-items:center;justify-content:center;color:#6F0021;opacity:.6;font-size:1.1rem;text-decoration:none;border-left:1px solid rgba(111,0,33,.14);margin-left:2px}
   .cs-opt:hover,.cs-home:hover{opacity:1}
+  @media(max-width:560px){.ctry-switch .cs-lbl{display:none}.ctry-switch{padding:6px 8px}}
 </style>
 </head>
 <body>
 <div class="co-soon">🇨🇴 Muy pronto disponible en Colombia — por ahora, mira todo lo que traemos y déjanos escribirte por WhatsApp.</div>
 <nav class="ctry-switch" aria-label="Country">
+  <span class="cs-lbl">País</span>
   <a href="/matcha" class="cs-opt" title="United States">🇺🇸</a>
   <a href="/colombia" class="cs-opt is-active" title="Colombia" aria-current="page">🇨🇴</a>
   <a href="/" class="cs-home" title="Cambiar país" aria-label="Cambiar país">⌂</a>
