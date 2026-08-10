@@ -83,6 +83,8 @@
 <!-- ============================================================= -->
 <style id="co-hide-buy">
   .cart-btn, .add-btn, #checkoutBtn, .cart-drawer, .cart-overlay, .cart-close { display:none !important; }
+  /* Sin ferias por ahora: ocultar TODO lo de "dónde encontrarnos" (nav, botones, footer y la sección) */
+  a[href="#findus"], #findus { display:none !important; }
   .co-soon{background:var(--matcha,#B7B424);color:#fff;text-align:center;font-family:var(--font-display,sans-serif);font-weight:600;font-size:.92rem;letter-spacing:.01em;padding:10px 16px;line-height:1.35}
   .ctry-switch{position:fixed;right:16px;bottom:16px;z-index:1000;display:flex;gap:4px;align-items:center;background:#fff;border:1px solid rgba(111,0,33,.14);border-radius:999px;padding:6px 8px 6px 13px;box-shadow:0 16px 36px -14px rgba(58,10,27,.55)}
   .ctry-switch .cs-lbl{font-family:'Fredoka',system-ui,sans-serif;font-weight:600;font-size:.72rem;color:#6F0021;opacity:.55;margin-right:2px;letter-spacing:.03em;text-transform:uppercase}
@@ -254,8 +256,8 @@
 <!-- ============================================================= -->
 <div class="band" aria-hidden="true">
   <div class="band-track">
-    <span>GOOEY COOKIES ✦ CEREMONIAL MATCHA ✦ MADE TO SHARE ✦ MIAMI MADE ✦ FARMERS MARKETS ✦ GOOEY COOKIES ✦ CEREMONIAL MATCHA ✦ MADE TO SHARE ✦ MIAMI MADE ✦ FARMERS MARKETS ✦ </span>
-    <span>GOOEY COOKIES ✦ CEREMONIAL MATCHA ✦ MADE TO SHARE ✦ MIAMI MADE ✦ FARMERS MARKETS ✦ GOOEY COOKIES ✦ CEREMONIAL MATCHA ✦ MADE TO SHARE ✦ MIAMI MADE ✦ FARMERS MARKETS ✦ </span>
+    <span>GOOEY COOKIES ✦ CEREMONIAL MATCHA ✦ MADE TO SHARE ✦ MIAMI MADE ✦ GOOEY COOKIES ✦ CEREMONIAL MATCHA ✦ MADE TO SHARE ✦ MIAMI MADE ✦ </span>
+    <span>GOOEY COOKIES ✦ CEREMONIAL MATCHA ✦ MADE TO SHARE ✦ MIAMI MADE ✦ GOOEY COOKIES ✦ CEREMONIAL MATCHA ✦ MADE TO SHARE ✦ MIAMI MADE ✦ </span>
   </div>
 </div>
 
@@ -1424,14 +1426,19 @@ const MARKETS = [
 /* Pop-up de "muy pronto en Colombia" — aparece al entrar; el botón lleva a la lista. */
 (function(){
   var ov=document.getElementById('coPop'); if(!ov) return;
-  function close(){ov.classList.remove('on');}
-  setTimeout(function(){ov.classList.add('on');},450);
+  function close(){ov.classList.remove('on'); try{sessionStorage.setItem('coPopSeen','1');}catch(e){}}
+  var seen=false; try{seen=sessionStorage.getItem('coPopSeen')==='1';}catch(e){}
+  if(!seen) setTimeout(function(){ov.classList.add('on');},650);
   document.getElementById('coPopX').addEventListener('click',close);
   document.getElementById('coPopClose2').addEventListener('click',close);
   ov.addEventListener('click',function(e){if(e.target===ov)close();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
   var join=ov.querySelector('.co-pop-join');
-  if(join)join.addEventListener('click',function(){close();var w=document.getElementById('waitlist');if(w)w.scrollIntoView({behavior:'smooth'});});
+  if(join)join.addEventListener('click',function(){
+    close();
+    var w=document.getElementById('waitlist');
+    if(w){ w.scrollIntoView({behavior:'smooth'}); var n=document.getElementById('wl-name'); if(n) setTimeout(function(){try{n.focus();}catch(e){}},650); }
+  });
 })();
 </script>
 
