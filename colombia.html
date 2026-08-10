@@ -108,11 +108,26 @@
   .wl-msg.ok{color:#1f9d6a;font-weight:600}.wl-msg.err{color:#c0392b}
   .wl-sent{font-family:var(--font-script,cursive);font-size:1.5rem;color:var(--wine,#6F0021)}
   @media(max-width:640px){.wl-in{grid-template-columns:1fr;text-align:center}.wl-gali{margin:0 auto}.wl-form{justify-content:center}.wl-copy p{margin-inline:auto}}
+  /* Pop-up "Muy pronto en Colombia" */
+  .co-pop-ov{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;background:rgba(58,10,27,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:20px}
+  .co-pop-ov.on{display:flex;animation:copfade .3s ease}
+  @keyframes copfade{from{opacity:0}to{opacity:1}}
+  .co-pop{position:relative;background:#fff;border-radius:28px;max-width:460px;width:100%;padding:36px 30px 30px;text-align:center;box-shadow:0 34px 90px -30px rgba(58,10,27,.65);animation:coppop .45s cubic-bezier(.23,1,.32,1)}
+  @keyframes coppop{from{opacity:0;transform:translateY(18px) scale(.95)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.co-pop-ov.on,.co-pop{animation:none}}
+  .co-pop-x{position:absolute;top:12px;right:16px;border:0;background:none;font-size:30px;line-height:1;color:#c8a8b0;cursor:pointer;padding:2px 6px}
+  .co-pop-x:hover{color:var(--wine,#6F0021)}
+  .co-pop-gali{width:132px;height:auto;margin:-84px auto 4px;display:block;filter:drop-shadow(0 14px 24px rgba(111,0,33,.32))}
+  .co-pop-flag{font-size:1.7rem;display:block;line-height:1}
+  .co-pop-h{font-family:var(--font-impact,sans-serif);text-transform:uppercase;color:var(--wine,#6F0021);font-size:clamp(2.1rem,7vw,3rem);letter-spacing:.005em;line-height:1;margin:6px 0 12px}
+  .co-pop-p{color:var(--ink,#3A0A1B);opacity:.84;font-size:1.02rem;line-height:1.5;margin:0 auto 22px;max-width:32ch}
+  .co-pop-btns{display:flex;flex-direction:column;gap:10px}
+  .co-pop .btn{justify-content:center;width:100%}
+  .co-pop-close2{background:none;border:0;color:var(--wine,#6F0021);opacity:.6;font-family:var(--font-display,sans-serif);font-weight:600;font-size:.94rem;cursor:pointer;padding:6px}
+  .co-pop-close2:hover{opacity:1}
 </style>
 </head>
-<body>
-<div class="co-soon">🇨🇴 Muy pronto disponible en Colombia — por ahora, mira todo lo que traemos y déjanos escribirte por WhatsApp.</div>
-<nav class="ctry-switch" aria-label="Country">
+<body><nav class="ctry-switch" aria-label="Country">
   <span class="cs-lbl">País</span>
   <a href="/matcha" class="cs-opt" title="United States">🇺🇸</a>
   <a href="/colombia" class="cs-opt is-active" title="Colombia" aria-current="page">🇨🇴</a>
@@ -1388,6 +1403,36 @@ const MARKETS = [
   if(!reduce) requestAnimationFrame(loop);
 })();
 </script>
+<!-- Pop-up "Muy pronto en Colombia" -->
+<div class="co-pop-ov" id="coPop" role="dialog" aria-modal="true" aria-label="Muy pronto en Colombia">
+  <div class="co-pop">
+    <button class="co-pop-x" id="coPopX" aria-label="Cerrar">&times;</button>
+    <img class="co-pop-gali" src="assets/img/gally-hi.png" alt="Gali, la mascota de Galleté">
+    <span class="co-pop-flag">🇨🇴</span>
+    <h2 class="co-pop-h" data-en="Coming soon to Colombia" data-es="Muy pronto en Colombia">Coming soon to Colombia</h2>
+    <p class="co-pop-p" data-en="Take a look at everything we're bringing — and be the first to know the moment we arrive. 🍪" data-es="Mira todo lo que traemos — y sé de las primeras en enterarte apenas lleguemos. 🍪">Take a look at everything we're bringing — and be the first to know the moment we arrive. 🍪</p>
+    <div class="co-pop-btns">
+      <button class="btn btn-primary co-pop-join" data-en="Join the waitlist 🐻" data-es="Unirme a la lista 🐻">Join the waitlist 🐻</button>
+      <button class="co-pop-close2" id="coPopClose2" data-en="Explore the menu" data-es="Ver el portafolio">Explore the menu</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Pop-up de "muy pronto en Colombia" — aparece al entrar; el botón lleva a la lista. */
+(function(){
+  var ov=document.getElementById('coPop'); if(!ov) return;
+  function close(){ov.classList.remove('on');}
+  setTimeout(function(){ov.classList.add('on');},450);
+  document.getElementById('coPopX').addEventListener('click',close);
+  document.getElementById('coPopClose2').addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  var join=ov.querySelector('.co-pop-join');
+  if(join)join.addEventListener('click',function(){close();var w=document.getElementById('waitlist');if(w)w.scrollIntoView({behavior:'smooth'});});
+})();
+</script>
+
 <script>
 /* Lista de espera Colombia → /api/waitlist (avisa al equipo + queda registrado). */
 (function(){
