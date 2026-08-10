@@ -261,6 +261,18 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .cs-home{width:32px;height:38px;display:flex;align-items:center;justify-content:center;color:var(--wine);opacity:.6;font-size:1.1rem;text-decoration:none;border-left:1px solid rgba(111,0,33,.12);margin-left:2px}
 @media(hover:hover){.cs-opt:hover{opacity:1;background:rgba(111,0,33,.06)}.cs-home:hover{opacity:1}}
 @media(max-width:560px){.ctry-switch .cs-lbl{display:none}.ctry-switch{padding:6px 8px}}
+/* toggle de idioma */
+.lang-toggle{background:none;border:1.5px solid var(--ring);border-radius:999px;padding:5px 11px;font-family:var(--font-display);font-weight:600;font-size:.8rem;cursor:pointer;color:var(--wine);display:flex;gap:3px;align-items:center;line-height:1}
+.lang-toggle .l{opacity:.4;transition:opacity .2s}.lang-toggle .l.on{opacity:1;color:var(--matcha-deep)}.lang-toggle .l-sep{opacity:.4}
+/* Gali (mascota) */
+.gali-tip{display:flex;align-items:center;gap:16px;justify-content:center;max-width:580px;margin:30px auto 0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:16px 22px}
+.gali-tip img{width:78px;height:auto;flex:none;filter:drop-shadow(0 8px 16px rgba(0,0,0,.3))}
+.gali-tip p{margin:0;color:var(--cream);font-size:.96rem;line-height:1.45;text-align:left}
+.gali-tip .gt-name{font-family:var(--font-script);color:var(--pink);font-size:1.2rem;display:block}
+.ritual-gali{display:block;width:clamp(130px,17vw,190px);height:auto;margin:0 auto 16px;filter:drop-shadow(0 16px 28px rgba(0,0,0,.28));animation:gfloat 5s ease-in-out infinite}
+@keyframes gfloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(1.5deg)}}
+@media(prefers-reduced-motion:reduce){.ritual-gali{animation:none}}
+@media(max-width:600px){.gali-tip{flex-direction:column;text-align:center}.gali-tip p{text-align:center}}
 </style>
 </head>
 <body id="top">
@@ -268,14 +280,14 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <!-- topbar -->
 <div class="topbar">
   <div class="tb-marquee">
-    <span>🍵 A cookie to share. A tea to remember.</span><span>·</span>
-    <span>🍵 Ceremonial-grade, made to be shared.</span><span>·</span>
-    <span>🍵 No added sugar. Real ingredients.</span><span>·</span>
-    <span>🍵 Shipping across Miami &amp; the U.S.</span><span>·</span>
-    <span>🍵 A cookie to share. A tea to remember.</span><span>·</span>
-    <span>🍵 Ceremonial-grade, made to be shared.</span><span>·</span>
-    <span>🍵 No added sugar. Real ingredients.</span><span>·</span>
-    <span>🍵 Shipping across Miami &amp; the U.S.</span><span>·</span>
+    <span data-en="🍵 Slow down. Whisk. Share." data-es="🍵 Respira. Bate. Comparte.">🍵 Slow down. Whisk. Share.</span><span>·</span>
+    <span data-en="🍵 Ceremonial-grade, made to be shared." data-es="🍵 Grado ceremonial, para compartir.">🍵 Ceremonial-grade, made to be shared.</span><span>·</span>
+    <span data-en="🍵 No added sugar. Real ingredients." data-es="🍵 Sin azúcar añadido. Ingredientes reales.">🍵 No added sugar. Real ingredients.</span><span>·</span>
+    <span data-en="🍵 Shipping across Miami &amp; the U.S." data-es="🍵 Envíos en Miami y EE. UU.">🍵 Shipping across Miami &amp; the U.S.</span><span>·</span>
+    <span data-en="🍵 Slow down. Whisk. Share." data-es="🍵 Respira. Bate. Comparte.">🍵 Slow down. Whisk. Share.</span><span>·</span>
+    <span data-en="🍵 Ceremonial-grade, made to be shared." data-es="🍵 Grado ceremonial, para compartir.">🍵 Ceremonial-grade, made to be shared.</span><span>·</span>
+    <span data-en="🍵 No added sugar. Real ingredients." data-es="🍵 Sin azúcar añadido. Ingredientes reales.">🍵 No added sugar. Real ingredients.</span><span>·</span>
+    <span data-en="🍵 Shipping across Miami &amp; the U.S." data-es="🍵 Envíos en Miami y EE. UU.">🍵 Shipping across Miami &amp; the U.S.</span><span>·</span>
   </div>
 </div>
 
@@ -284,13 +296,14 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
   <div class="container nav-inner">
     <a href="#top" class="brand" aria-label="Galleté home"><img src="assets/img/logo-gallete.png" alt="Galleté" class="brand-logo"></a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#story">The Ritual</a>
-      <a href="#why">Why Ours</a>
-      <a href="#flavors">Flavors</a>
-      <a href="#shop">Shop</a>
-      <a href="#prepare">How to</a>
+      <a href="#story" data-en="The Ritual" data-es="El ritual">The Ritual</a>
+      <a href="#why" data-en="Why Ours" data-es="Por qué el nuestro">Why Ours</a>
+      <a href="#flavors" data-en="Flavors" data-es="Sabores">Flavors</a>
+      <a href="#shop" data-en="Shop" data-es="Tienda">Shop</a>
+      <a href="#prepare" data-en="How to" data-es="Cómo se hace">How to</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:12px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="lang-toggle" id="langToggle" aria-label="Language / Idioma"><span class="l l-en on">EN</span><span class="l-sep">/</span><span class="l l-es">ES</span></button>
       <button class="cart-btn" id="cartBtn" aria-label="Open cart">
         <span class="material-symbols-rounded" style="font-size:20px">shopping_cart</span><span class="cart-count" id="cartCount">0</span>
       </button>
@@ -303,18 +316,18 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="kicker rev">Ceremonial-grade · Organic · Miami</span>
-      <h1 class="hero-h1 rev">Slow down.<br>Whisk. <span class="g">Share.</span></h1>
-      <p class="hero-sub rev">A premium matcha, carefully selected for natural energy, a smooth taste, and a moment anyone can enjoy. On its own or as a latte — this is the ritual we love most.</p>
+      <span class="kicker rev" data-en="Ceremonial-grade · Organic · Miami" data-es="Grado ceremonial · Orgánico · Miami">Ceremonial-grade · Organic · Miami</span>
+      <h1 class="hero-h1 rev" data-en="Slow down.<br>Whisk. <span class='g'>Share.</span>" data-es="Respira.<br>Bate. <span class='g'>Comparte.</span>">Slow down.<br>Whisk. <span class="g">Share.</span></h1>
+      <p class="hero-sub rev" data-en="A premium matcha, carefully selected for natural energy, a smooth taste, and a moment anyone can enjoy. On its own or as a latte — this is the ritual we love most." data-es="Un matcha premium, elegido con cuidado para darte energía natural, un sabor suave y un momento que cualquiera puede disfrutar. Solo o en latte — este es el ritual que más amamos.">A premium matcha, carefully selected for natural energy, a smooth taste, and a moment anyone can enjoy. On its own or as a latte — this is the ritual we love most.</p>
       <div class="hero-cta rev">
-        <a href="#shop" class="btn btn-primary">Shop the matcha</a>
-        <a href="#story" class="btn btn-ghost">Our story</a>
+        <a href="#shop" class="btn btn-primary" data-en="Shop the matcha" data-es="Ver el matcha">Shop the matcha</a>
+        <a href="#story" class="btn btn-ghost" data-en="Our story" data-es="Nuestra historia">Our story</a>
       </div>
-      <div class="hero-note rev">a cookie to share, a tea to remember 🍵</div>
+      <div class="hero-note rev" data-en="energy, calm, ritual 🍵" data-es="energía, calma, ritual 🍵">energy, calm, ritual 🍵</div>
     </div>
     <div class="hero-visual rev">
       <div class="hero-glow" aria-hidden="true"></div>
-      <div class="hero-badge">2 tins<br>for $35</div>
+      <div class="hero-badge" data-en="2 tins<br>for $35" data-es="2 latas<br>por $35">2 tins<br>for $35</div>
       <div class="hero-photo"><img src="assets/img/matcha-ceremonial.jpg" alt="Galleté ceremonial organic matcha tin" fetchpriority="high"></div>
     </div>
   </div>
@@ -323,10 +336,10 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <!-- trust strip -->
 <div class="trust">
   <div class="container trust-in">
-    <div class="trust-item rev"><span class="material-symbols-rounded">verified</span><b>Ceremonial grade</b><span>Youngest, tender leaves</span></div>
-    <div class="trust-item rev"><span class="material-symbols-rounded">eco</span><b>Organic</b><span>Carefully selected</span></div>
-    <div class="trust-item rev"><span class="material-symbols-rounded">no_food</span><b>No added sugar</b><span>Real ingredients only</span></div>
-    <div class="trust-item rev"><span class="material-symbols-rounded">local_shipping</span><b>Ships nationwide</b><span>Miami & across the U.S.</span></div>
+    <div class="trust-item rev"><span class="material-symbols-rounded">verified</span><b data-en="Ceremonial grade" data-es="Grado ceremonial">Ceremonial grade</b><span data-en="Youngest, tender leaves" data-es="Las hojas más jóvenes">Youngest, tender leaves</span></div>
+    <div class="trust-item rev"><span class="material-symbols-rounded">eco</span><b data-en="Organic" data-es="Orgánico">Organic</b><span data-en="Carefully selected" data-es="Elegido con cuidado">Carefully selected</span></div>
+    <div class="trust-item rev"><span class="material-symbols-rounded">no_food</span><b data-en="No added sugar" data-es="Sin azúcar añadido">No added sugar</b><span data-en="Real ingredients only" data-es="Solo ingredientes reales">Real ingredients only</span></div>
+    <div class="trust-item rev"><span class="material-symbols-rounded">local_shipping</span><b data-en="Ships nationwide" data-es="Envíos a todo el país">Ships nationwide</b><span data-en="Miami & across the U.S." data-es="Miami y todo EE. UU.">Miami & across the U.S.</span></div>
   </div>
 </div>
 
@@ -335,11 +348,11 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
   <div class="container story-in">
     <div class="story-photo rev"><img src="assets/img/matcha-whisk.jpg" alt="Whisking Galleté ceremonial matcha"></div>
     <div class="story-copy">
-      <span class="kicker rev">How matcha found Galleté</span>
-      <h2 class="rev">A cookie to share.<br>A tea to remember.</h2>
-      <p class="rev">Matcha came to Galleté when we realized our cookies needed more than a drink beside them. We wanted to bring back the idea of a pause — sitting down, talking, sharing.</p>
-      <p class="rev">If the cookie was the excuse to bring people together, the matcha would be the ritual that makes the moment stay. Since then, they're part of the same story.</p>
-      <span class="sig rev">— made to be shared 🤎</span>
+      <span class="kicker rev" data-en="The matcha ritual" data-es="El ritual del matcha">The matcha ritual</span>
+      <h2 class="rev" data-en="A moment to<br>slow down." data-es="Un momento para<br>bajar el ritmo.">A moment to<br>slow down.</h2>
+      <p class="rev" data-en="More than a drink, our matcha is a small ritual — a pause to breathe, to be present, and to enjoy something made with care." data-es="Más que una bebida, nuestro matcha es un pequeño ritual — una pausa para respirar, estar presente y disfrutar algo hecho con cuidado.">More than a drink, our matcha is a small ritual — a pause to breathe, to be present, and to enjoy something made with care.</p>
+      <p class="rev" data-en="Whisk it, watch the foam rise, and take a moment that's just yours." data-es="Bátelo, mira subir la espuma y date un momento que es solo tuyo.">Whisk it, watch the foam rise, and take a moment that's just yours.</p>
+      <span class="sig rev" data-en="— made to be shared 🍵" data-es="— para compartir 🍵">— made to be shared 🍵</span>
     </div>
   </div>
 </section>
@@ -348,14 +361,14 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <section class="section" id="why" style="background:var(--paper)">
   <div class="container">
     <div style="text-align:center;max-width:640px;margin:0 auto">
-      <span class="kicker rev">Why our matcha</span>
-      <h2 class="section-title rev">Smooth enough for anyone.<br>Good enough for everyone.</h2>
-      <p class="lead rev" style="margin:16px auto 0">Our ceremonial organic matcha is imported and made from the youngest, most tender tea leaves — for a smoother taste, a finer texture, and far less bitterness than everyday matcha.</p>
+      <span class="kicker rev" data-en="Why our matcha" data-es="Por qué el nuestro">Why our matcha</span>
+      <h2 class="section-title rev" data-en="Smooth enough for anyone.<br>Good enough for everyone." data-es="Suave para cualquiera.<br>Bueno para todos.">Smooth enough for anyone.<br>Good enough for everyone.</h2>
+      <p class="lead rev" style="margin:16px auto 0" data-en="Our ceremonial organic matcha is imported and made from the youngest, most tender tea leaves — for a smoother taste, a finer texture, and far less bitterness than everyday matcha." data-es="Nuestro matcha ceremonial orgánico es importado y hecho con las hojas más jóvenes y tiernas — para un sabor más suave, una textura más fina y mucho menos amargor que un matcha común.">Our ceremonial organic matcha is imported and made from the youngest, most tender tea leaves — for a smoother taste, a finer texture, and far less bitterness than everyday matcha.</p>
     </div>
     <div class="feat-grid">
-      <div class="feat rev"><div class="fi"><span class="material-symbols-rounded">spa</span></div><h3>Ceremonial, not ordinary</h3><p>Lower grades are intense and astringent — great for baking, not for sipping. Ours is the youngest leaves: soft, fine, and balanced enough to drink on its own.</p></div>
-      <div class="feat rev"><div class="fi"><span class="material-symbols-rounded">local_cafe</span></div><h3>Real flavors, no shortcuts</h3><p>Strawberry, banana, vanilla and honey caramel — blended with real ingredients. No added sugar, no artificial sweeteners. Just the matcha you love, with a twist.</p></div>
-      <div class="feat rev"><div class="fi"><span class="material-symbols-rounded">blender</span></div><h3>Endlessly versatile</h3><p>Hot or iced, lattes or smoothies, desserts or baking. Whether it's your first cup or your daily one, there's a Galleté matcha for you.</p></div>
+      <div class="feat rev"><div class="fi"><span class="material-symbols-rounded">spa</span></div><h3 data-en="Ceremonial, not ordinary" data-es="Ceremonial, no cualquiera">Ceremonial, not ordinary</h3><p data-en="Lower grades are intense and astringent — great for baking, not for sipping. Ours is the youngest leaves: soft, fine, and balanced enough to drink on its own." data-es="Los grados bajos son intensos y astringentes — buenos para hornear, no para tomar. El nuestro es de las hojas más jóvenes: suave, fino y equilibrado para tomarlo solo.">Lower grades are intense and astringent — great for baking, not for sipping. Ours is the youngest leaves: soft, fine, and balanced enough to drink on its own.</p></div>
+      <div class="feat rev"><div class="fi"><span class="material-symbols-rounded">local_cafe</span></div><h3 data-en="Real flavors, no shortcuts" data-es="Sabores reales, sin atajos">Real flavors, no shortcuts</h3><p data-en="Strawberry, banana, vanilla and honey caramel — blended with real ingredients. No added sugar, no artificial sweeteners. Just the matcha you love, with a twist." data-es="Fresa, banano, vainilla y honey caramel — con ingredientes reales. Sin azúcar añadido ni endulzantes artificiales. El matcha que amas, con un giro.">Strawberry, banana, vanilla and honey caramel — blended with real ingredients. No added sugar, no artificial sweeteners. Just the matcha you love, with a twist.</p></div>
+      <div class="feat rev"><div class="fi"><span class="material-symbols-rounded">blender</span></div><h3 data-en="Endlessly versatile" data-es="Súper versátil">Endlessly versatile</h3><p data-en="Hot or iced, lattes or smoothies, desserts or baking. Whether it's your first cup or your daily one, there's a Galleté matcha for you." data-es="Caliente o frío, en latte o smoothie, en postres o para hornear. Sea tu primera taza o la de cada día, hay un matcha de Galleté para ti.">Hot or iced, lattes or smoothies, desserts or baking. Whether it's your first cup or your daily one, there's a Galleté matcha for you.</p></div>
     </div>
   </div>
 </section>
@@ -364,22 +377,22 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <section class="section flav" id="flavors">
   <div class="container">
     <div style="text-align:center">
-      <span class="kicker rev">A flavor for every mood</span>
-      <h2 class="section-title rev">Matcha, your way</h2>
-      <p class="lead rev" style="margin:14px auto 0">Start with the classic, or find your favorite among our real-ingredient blends.</p>
+      <span class="kicker rev" data-en="A flavor for every mood" data-es="Un sabor para cada momento">A flavor for every mood</span>
+      <h2 class="section-title rev" data-en="Matcha, your way" data-es="Matcha, a tu manera">Matcha, your way</h2>
+      <p class="lead rev" style="margin:14px auto 0" data-en="Start with the classic, or find your favorite among our real-ingredient blends." data-es="Empieza por el clásico, o encuentra tu favorito entre nuestros sabores con ingredientes reales.">Start with the classic, or find your favorite among our real-ingredient blends.</p>
     </div>
     <div class="mc">
       <button class="mc-arrow mc-prev" type="button" aria-label="Previous"><span class="material-symbols-rounded">chevron_left</span></button>
       <div class="mc-track" id="flavTrack">
-        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-ceremonial.jpg" alt="Ceremonial organic matcha" loading="lazy"></div><div class="cap"><b>Ceremonial Organic</b><span>The classic · smooth &amp; balanced</span></div></div>
-        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-strawberry.jpg" alt="Strawberry matcha" loading="lazy"></div><div class="cap"><b>Strawberry</b><span>Real fruit · no added sugar</span></div></div>
-        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-banana.jpg" alt="Banana matcha" loading="lazy"></div><div class="cap"><b>Banana</b><span>Soft &amp; creamy</span></div></div>
-        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-vanilla.jpg" alt="Vanilla matcha" loading="lazy"></div><div class="cap"><b>Vanilla</b><span>Warm &amp; rounded</span></div></div>
-        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-honey.jpg" alt="Honey caramel matcha" loading="lazy"></div><div class="cap"><b>Honey Caramel</b><span>Sweet, gentle finish</span></div></div>
+        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-ceremonial.jpg" alt="Ceremonial organic matcha" loading="lazy"></div><div class="cap"><b data-en="Ceremonial Organic" data-es="Ceremonial Orgánico">Ceremonial Organic</b><span data-en="The classic · smooth &amp; balanced" data-es="El clásico · suave y equilibrado">The classic · smooth &amp; balanced</span></div></div>
+        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-strawberry.jpg" alt="Strawberry matcha" loading="lazy"></div><div class="cap"><b data-en="Strawberry" data-es="Fresa">Strawberry</b><span data-en="Real fruit · no added sugar" data-es="Fruta real · sin azúcar añadido">Real fruit · no added sugar</span></div></div>
+        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-banana.jpg" alt="Banana matcha" loading="lazy"></div><div class="cap"><b data-en="Banana" data-es="Banano">Banana</b><span data-en="Soft &amp; creamy" data-es="Suave y cremoso">Soft &amp; creamy</span></div></div>
+        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-vanilla.jpg" alt="Vanilla matcha" loading="lazy"></div><div class="cap"><b data-en="Vanilla" data-es="Vainilla">Vanilla</b><span data-en="Warm &amp; rounded" data-es="Cálido y redondo">Warm &amp; rounded</span></div></div>
+        <div class="mc-card"><div class="pic"><img src="assets/img/matcha-honey.jpg" alt="Honey caramel matcha" loading="lazy"></div><div class="cap"><b data-en="Honey Caramel" data-es="Honey Caramel">Honey Caramel</b><span data-en="Sweet, gentle finish" data-es="Dulce y suave al final">Sweet, gentle finish</span></div></div>
       </div>
       <button class="mc-arrow mc-next" type="button" aria-label="Next"><span class="material-symbols-rounded">chevron_right</span></button>
     </div>
-    <p class="flav-note rev">All flavors use the same high-grade matcha — just blended with real ingredients. 🍓🍌🍯</p>
+    <p class="flav-note rev" data-en="All flavors use the same high-grade matcha — just blended with real ingredients. 🍓🍌🍯" data-es="Todos los sabores usan el mismo matcha de alto grado — solo mezclado con ingredientes reales. 🍓🍌🍯">All flavors use the same high-grade matcha — just blended with real ingredients. 🍓🍌🍯</p>
   </div>
 </section>
 
@@ -387,47 +400,47 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <section class="section" id="shop" style="background:var(--cream-bg)">
   <div class="container">
     <div style="text-align:center;max-width:600px;margin:0 auto">
-      <span class="kicker rev">Take it home</span>
-      <h2 class="section-title rev">Shop the matcha</h2>
-      <p class="lead rev" style="margin:14px auto 0">Tins to keep, sachets to explore, and a bundle for the ones who already know.</p>
+      <span class="kicker rev" data-en="Take it home" data-es="Llévatelo a casa">Take it home</span>
+      <h2 class="section-title rev" data-en="Shop the matcha" data-es="Compra el matcha">Shop the matcha</h2>
+      <p class="lead rev" style="margin:14px auto 0" data-en="Tins to keep, sachets to explore, and a bundle for the ones who already know." data-es="Latas para tener, sobres para explorar, y un combo para quienes ya lo aman.">Tins to keep, sachets to explore, and a bundle for the ones who already know.</p>
     </div>
     <div class="shop-grid">
       <article class="pcard star rev">
         <div class="pc-pic"><img src="assets/img/matcha-ceremonial.jpg" alt="Ceremonial matcha tin" loading="lazy"></div>
-        <span class="pc-flag">Bestseller</span>
+        <span class="pc-flag" data-en="Bestseller" data-es="El más vendido">Bestseller</span>
         <div class="pc-body">
-          <h3>Ceremonial Matcha Tin</h3>
-          <p>Our star. Classic ceremonial-grade organic matcha — versatile and smooth, straight or as a latte.</p>
-          <div class="pc-foot"><span class="pc-price">$20<small>per tin</small></span>
-          <button class="btn btn-primary btn-sm add" data-id="tin" data-name="Ceremonial Matcha Tin" data-price="20" data-img="matcha-ceremonial">Add</button></div>
+          <h3 data-en="Ceremonial Matcha Tin" data-es="Lata de Matcha Ceremonial">Ceremonial Matcha Tin</h3>
+          <p data-en="Our star. Classic ceremonial-grade organic matcha — versatile and smooth, straight or as a latte." data-es="Nuestro estrella. Matcha ceremonial orgánico clásico — versátil y suave, solo o en latte.">Our star. Classic ceremonial-grade organic matcha — versatile and smooth, straight or as a latte.</p>
+          <div class="pc-foot"><span class="pc-price">$20<small data-en="per tin" data-es="la lata">per tin</small></span>
+          <button class="btn btn-primary btn-sm add" data-id="tin" data-name="Ceremonial Matcha Tin" data-price="20" data-img="matcha-ceremonial" data-en="Add" data-es="Agregar">Add</button></div>
         </div>
       </article>
       <article class="pcard rev">
         <div class="pc-pic"><img src="assets/img/matcha-strawberry.jpg" alt="Assorted matcha sachets" loading="lazy"></div>
         <div class="pc-body">
-          <h3>Assorted Sachets · 5</h3>
-          <p>Five single-serve sachets across our flavors. The easiest way to find your favorite.</p>
-          <div class="pc-foot"><span class="pc-price">$15<small>5 sachets</small></span>
-          <button class="btn btn-primary btn-sm add" data-id="pack5" data-name="Assorted Sachet Pack (5)" data-price="15" data-img="matcha-strawberry">Add</button></div>
+          <h3 data-en="Assorted Sachets · 5" data-es="Sobres surtidos · 5">Assorted Sachets · 5</h3>
+          <p data-en="Five single-serve sachets across our flavors. The easiest way to find your favorite." data-es="Cinco sobres individuales de nuestros sabores. La forma más fácil de encontrar tu favorito.">Five single-serve sachets across our flavors. The easiest way to find your favorite.</p>
+          <div class="pc-foot"><span class="pc-price">$15<small data-en="5 sachets" data-es="5 sobres">5 sachets</small></span>
+          <button class="btn btn-primary btn-sm add" data-id="pack5" data-name="Assorted Sachet Pack (5)" data-price="15" data-img="matcha-strawberry" data-en="Add" data-es="Agregar">Add</button></div>
         </div>
       </article>
       <article class="pcard rev">
         <div class="pc-pic"><img src="assets/img/matcha-vanilla.jpg" alt="Assorted matcha sachets 10" loading="lazy"></div>
         <div class="pc-body">
-          <h3>Assorted Sachets · 10</h3>
-          <p>Ten sachets to keep the ritual going — mix flavors and share the rest.</p>
-          <div class="pc-foot"><span class="pc-price">$25<small>10 sachets</small></span>
-          <button class="btn btn-primary btn-sm add" data-id="pack10" data-name="Assorted Sachet Pack (10)" data-price="25" data-img="matcha-vanilla">Add</button></div>
+          <h3 data-en="Assorted Sachets · 10" data-es="Sobres surtidos · 10">Assorted Sachets · 10</h3>
+          <p data-en="Ten sachets to keep the ritual going — mix flavors and share the rest." data-es="Diez sobres para seguir el ritual — mezcla sabores y comparte el resto.">Ten sachets to keep the ritual going — mix flavors and share the rest.</p>
+          <div class="pc-foot"><span class="pc-price">$25<small data-en="10 sachets" data-es="10 sobres">10 sachets</small></span>
+          <button class="btn btn-primary btn-sm add" data-id="pack10" data-name="Assorted Sachet Pack (10)" data-price="25" data-img="matcha-vanilla" data-en="Add" data-es="Agregar">Add</button></div>
         </div>
       </article>
       <article class="pcard rev">
         <div class="pc-pic"><img src="assets/img/matcha-honey.jpg" alt="Two matcha tins bundle" loading="lazy"></div>
-        <span class="pc-flag promo">Best value</span>
+        <span class="pc-flag promo" data-en="Best value" data-es="Mejor precio">Best value</span>
         <div class="pc-body">
-          <h3>2 Tins Bundle</h3>
-          <p>Two ceremonial tins — one to keep, one to share. Save when you stock up.</p>
-          <div class="pc-foot"><span class="pc-price">$35<small>2 tins · save $5</small></span>
-          <button class="btn btn-primary btn-sm add" data-id="bundle" data-name="2 Tins Bundle" data-price="35" data-img="matcha-honey">Add</button></div>
+          <h3 data-en="2 Tins Bundle" data-es="Combo 2 latas">2 Tins Bundle</h3>
+          <p data-en="Two ceremonial tins — one to keep, one to share. Save when you stock up." data-es="Dos latas ceremoniales — una para ti, otra para compartir. Ahorra al llevar más.">Two ceremonial tins — one to keep, one to share. Save when you stock up.</p>
+          <div class="pc-foot"><span class="pc-price">$35<small data-en="2 tins · save $5" data-es="2 latas · ahorra $5">2 tins · save $5</small></span>
+          <button class="btn btn-primary btn-sm add" data-id="bundle" data-name="2 Tins Bundle" data-price="35" data-img="matcha-honey" data-en="Add" data-es="Agregar">Add</button></div>
         </div>
       </article>
     </div>
@@ -438,29 +451,32 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <section class="section prep" id="prepare">
   <div class="container">
     <div style="text-align:center;max-width:620px;margin:0 auto">
-      <span class="kicker">The 2-minute ritual</span>
-      <h2 class="section-title">How to make your matcha latte</h2>
+      <span class="kicker" data-en="The 2-minute ritual" data-es="El ritual de 2 minutos">The 2-minute ritual</span>
+      <h2 class="section-title" data-en="How to make your matcha latte" data-es="Cómo preparar tu matcha latte">How to make your matcha latte</h2>
     </div>
     <div class="prep-hero rev"><img src="assets/img/matcha-pour.jpg" alt="Pouring milk into a Galleté matcha latte" loading="lazy"></div>
     <div class="prep-grid">
-      <div class="pstep rev"><span class="n">1</span><p>Sift <b>5 g</b> of matcha into a bowl.</p></div>
-      <div class="pstep rev"><span class="n">2</span><p>Add <b>15 mL</b> room-temperature water and whisk into a smooth paste.</p></div>
-      <div class="pstep rev"><span class="n">3</span><p>Add <b>40 mL</b> water (below 80°C / 176°F) and whisk in an “M” or “W” motion until foamy.</p></div>
-      <div class="pstep rev"><span class="n">4</span><p>Fill a glass with <b>150 mL</b> of your favorite milk, ice and sweetener (optional).</p></div>
-      <div class="pstep rev"><span class="n">5</span><p>Pour the matcha over the milk, stir, and enjoy.</p></div>
+      <div class="pstep rev"><span class="n">1</span><p data-en="Sift <b>5 g</b> of matcha into a bowl." data-es="Tamiza <b>5 g</b> de matcha en un bowl.">Sift <b>5 g</b> of matcha into a bowl.</p></div>
+      <div class="pstep rev"><span class="n">2</span><p data-en="Add <b>15 mL</b> room-temperature water and whisk into a smooth paste." data-es="Agrega <b>15 mL</b> de agua a temperatura ambiente y bate hasta una pasta suave.">Add <b>15 mL</b> room-temperature water and whisk into a smooth paste.</p></div>
+      <div class="pstep rev"><span class="n">3</span><p data-en="Add <b>40 mL</b> water (below 80°C / 176°F) and whisk in an “M” or “W” motion until foamy." data-es="Agrega <b>40 mL</b> de agua (menos de 80°C / 176°F) y bate en “M” o “W” hasta que haga espuma.">Add <b>40 mL</b> water (below 80°C / 176°F) and whisk in an “M” or “W” motion until foamy.</p></div>
+      <div class="pstep rev"><span class="n">4</span><p data-en="Fill a glass with <b>150 mL</b> of your favorite milk, ice and sweetener (optional)." data-es="Llena un vaso con <b>150 mL</b> de tu leche favorita, hielo y endulzante (opcional).">Fill a glass with <b>150 mL</b> of your favorite milk, ice and sweetener (optional).</p></div>
+      <div class="pstep rev"><span class="n">5</span><p data-en="Pour the matcha over the milk, stir, and enjoy." data-es="Vierte el matcha sobre la leche, revuelve y disfruta.">Pour the matcha over the milk, stir, and enjoy.</p></div>
     </div>
-    <p class="prep-tip">tip: always sift before whisking, and never use boiling water 🍵</p>
+    <div class="gali-tip rev">
+      <img src="assets/img/gally-hi.png" alt="Gali" loading="lazy">
+      <p><span class="gt-name">Gali's tip 🐻</span><span data-en="Always sift before whisking, and never use boiling water — that's the secret to a smooth, foamy matcha." data-es="Siempre tamiza antes de batir, y nunca uses agua hirviendo — ese es el secreto de un matcha suave y espumoso.">Always sift before whisking, and never use boiling water — that's the secret to a smooth, foamy matcha.</span></p>
+    </div>
   </div>
 </section>
 
 <!-- ritual -->
 <section class="section ritual">
   <div class="container">
-    <div class="ritual-photo rev"><img src="assets/img/matcha-moment.jpg" alt="A quiet matcha moment" loading="lazy"></div>
-    <h2 class="rev">A pause worth<br>remembering.</h2>
-    <p class="rev">We want every cup to be an invitation to slow down — to share a conversation, create a memory, or simply take a moment for yourself.</p>
-    <p class="rev">More than a drink, we want our matcha to become that small ritual that turns an ordinary moment into a special one.</p>
-    <span class="sig rev">that's the Galleté way</span>
+    <img class="ritual-gali rev" src="assets/img/gally-hi.png" alt="Gali con un matcha de Galleté" loading="lazy">
+    <h2 class="rev" data-en="A pause worth<br>remembering." data-es="Una pausa para<br>recordar.">A pause worth<br>remembering.</h2>
+    <p class="rev" data-en="We want every cup to be an invitation to slow down — to share a conversation, create a memory, or simply take a moment for yourself." data-es="Queremos que cada taza sea una invitación a bajar el ritmo — compartir una conversación, crear un recuerdo o simplemente darte un momento para ti.">We want every cup to be an invitation to slow down — to share a conversation, create a memory, or simply take a moment for yourself.</p>
+    <p class="rev" data-en="More than a drink, we want our matcha to become that small ritual that turns an ordinary moment into a special one." data-es="Más que una bebida, queremos que nuestro matcha se vuelva ese pequeño ritual que convierte un momento cualquiera en uno especial.">More than a drink, we want our matcha to become that small ritual that turns an ordinary moment into a special one.</p>
+    <span class="sig rev" data-en="that's the Galleté way" data-es="así es Galleté">that's the Galleté way</span>
   </div>
 </section>
 
@@ -468,15 +484,15 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <section class="section" id="buy" style="background:var(--paper)">
   <div class="container buy-in">
     <div>
-      <span class="kicker rev">Get yours</span>
-      <h2 class="section-title rev">Where to find us</h2>
-      <p class="lead rev" style="margin-top:14px">Order online and we'll ship it to your door — across Miami and the U.S. Prefer a marketplace? Find us on Amazon, or say hi on Instagram.</p>
+      <span class="kicker rev" data-en="Get yours" data-es="Consíguelo">Get yours</span>
+      <h2 class="section-title rev" data-en="Where to find us" data-es="Dónde encontrarnos">Where to find us</h2>
+      <p class="lead rev" style="margin-top:14px" data-en="Order online and we'll ship it to your door — across Miami and the U.S. Prefer a marketplace? Find us on Amazon, or say hi on Instagram." data-es="Pide en línea y te lo enviamos a tu puerta — en Miami y todo EE. UU. ¿Prefieres un marketplace? Nos encuentras en Amazon, o salúdanos en Instagram.">Order online and we'll ship it to your door — across Miami and the U.S. Prefer a marketplace? Find us on Amazon, or say hi on Instagram.</p>
       <div class="buy-ways">
-        <div class="bway rev"><span class="material-symbols-rounded">local_shipping</span><div><b>Online &amp; shipping</b> <span>— straight to your door, nationwide.</span></div></div>
-        <div class="bway rev"><span class="material-symbols-rounded">storefront</span><div><b>Amazon</b> <span>— coming soon to your cart.</span></div></div>
-        <div class="bway rev"><span class="material-symbols-rounded">favorite</span><div><b>@gallete_co</b> <span>— DM us for custom orders.</span></div></div>
+        <div class="bway rev"><span class="material-symbols-rounded">local_shipping</span><div><b data-en="Online &amp; shipping" data-es="En línea y envíos">Online &amp; shipping</b> <span data-en="— straight to your door, nationwide." data-es="— directo a tu puerta, a todo el país.">— straight to your door, nationwide.</span></div></div>
+        <div class="bway rev"><span class="material-symbols-rounded">storefront</span><div><b>Amazon</b> <span data-en="— coming soon to your cart." data-es="— muy pronto en tu carrito.">— coming soon to your cart.</span></div></div>
+        <div class="bway rev"><span class="material-symbols-rounded">favorite</span><div><b>@gallete_co</b> <span data-en="— DM us for custom orders." data-es="— escríbenos por DM para pedidos.">— DM us for custom orders.</span></div></div>
       </div>
-      <div style="margin-top:26px"><a href="#shop" class="btn btn-primary">Shop the matcha</a></div>
+      <div style="margin-top:26px"><a href="#shop" class="btn btn-primary" data-en="Shop the matcha" data-es="Compra el matcha">Shop the matcha</a></div>
     </div>
     <div class="buy-photo rev"><img src="assets/img/matcha-iced.jpg" alt="Iced Galleté matcha latte"></div>
   </div>
@@ -487,34 +503,34 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
   <div class="container footer-in">
     <div>
       <img src="assets/img/logo-gallete-cream.png" alt="Galleté" class="footer-logo" onerror="this.src='assets/img/logo-gallete.png'">
-      <p>Ceremonial matcha, made to be shared. Slow down, whisk, and enjoy the ritual.</p>
+      <p data-en="Ceremonial matcha, made to be shared. Slow down, whisk, and enjoy the ritual." data-es="Matcha ceremonial, para compartir. Respira, bate y disfruta el ritual.">Ceremonial matcha, made to be shared. Slow down, whisk, and enjoy the ritual.</p>
       <a class="ig" href="https://www.instagram.com/gallete_co" target="_blank" rel="noopener"><span class="material-symbols-rounded" style="font-size:20px">photo_camera</span>@gallete_co</a>
     </div>
     <div class="footer-links">
       <div><h4>Matcha</h4>
-        <a href="#story">The ritual</a><a href="#why">Why ours</a><a href="#flavors">Flavors</a><a href="#prepare">How to make it</a></div>
-      <div><h4>Shop</h4>
-        <a href="#shop">Ceremonial tin</a><a href="#shop">Sachet packs</a><a href="#shop">2 tins bundle</a><a href="#buy">Shipping</a></div>
+        <a href="#story" data-en="The ritual" data-es="El ritual">The ritual</a><a href="#why" data-en="Why ours" data-es="Por qué el nuestro">Why ours</a><a href="#flavors" data-en="Flavors" data-es="Sabores">Flavors</a><a href="#prepare" data-en="How to make it" data-es="Cómo se hace">How to make it</a></div>
+      <div><h4 data-en="Shop" data-es="Tienda">Shop</h4>
+        <a href="#shop" data-en="Ceremonial tin" data-es="Lata ceremonial">Ceremonial tin</a><a href="#shop" data-en="Sachet packs" data-es="Packs de sobres">Sachet packs</a><a href="#shop" data-en="2 tins bundle" data-es="Combo 2 latas">2 tins bundle</a><a href="#buy" data-en="Shipping" data-es="Envíos">Shipping</a></div>
     </div>
   </div>
-  <div class="container footer-bottom">© Galleté · a cookie to share, a tea to remember</div>
+  <div class="container footer-bottom" data-en="© Galleté · ceremonial matcha, made to be shared" data-es="© Galleté · matcha ceremonial, para compartir">© Galleté · ceremonial matcha, made to be shared</div>
 </footer>
 
 <!-- mobile drawer -->
 <div class="mback" id="mback"></div>
 <nav class="mdrawer" id="mdrawer" aria-label="Mobile">
-  <a href="#story">The Ritual</a><a href="#why">Why Ours</a><a href="#flavors">Flavors</a><a href="#shop">Shop</a><a href="#prepare">How to</a><a href="#buy">Where to buy</a>
+  <a href="#story" data-en="The Ritual" data-es="El ritual">The Ritual</a><a href="#why" data-en="Why Ours" data-es="Por qué el nuestro">Why Ours</a><a href="#flavors" data-en="Flavors" data-es="Sabores">Flavors</a><a href="#shop" data-en="Shop" data-es="Tienda">Shop</a><a href="#prepare" data-en="How to" data-es="Cómo se hace">How to</a><a href="#buy" data-en="Where to buy" data-es="Dónde comprar">Where to buy</a>
 </nav>
 
 <!-- cart -->
 <div class="cart-ov" id="cartOv"></div>
 <aside class="cart-drawer" id="cartDrawer" aria-label="Cart">
-  <div class="cart-head"><h3>Your bag</h3><button class="cart-x" id="cartClose" aria-label="Close"><span class="material-symbols-rounded" style="font-size:28px">close</span></button></div>
+  <div class="cart-head"><h3 data-en="Your bag" data-es="Tu bolsa">Your bag</h3><button class="cart-x" id="cartClose" aria-label="Close"><span class="material-symbols-rounded" style="font-size:28px">close</span></button></div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-foot">
-    <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
-    <button class="btn btn-primary" id="checkoutBtn">Checkout</button>
-    <p class="fine">Secure checkout coming soon · we'll confirm your order and shipping.</p>
+    <div class="cart-total"><span data-en="Total" data-es="Total">Total</span><span id="cartTotal">$0</span></div>
+    <button class="btn btn-primary" id="checkoutBtn" data-en="Checkout" data-es="Pagar">Checkout</button>
+    <p class="fine" data-en="Secure checkout coming soon · we'll confirm your order and shipping." data-es="Pago seguro muy pronto · confirmamos tu pedido y el envío.">Secure checkout coming soon · we'll confirm your order and shipping.</p>
   </div>
 </aside>
 
@@ -522,6 +538,22 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 /* ===== CONFIG (⚙️ cambiar cuando el cliente confirme) ===== */
 var ORDER_PHONE = '';           // WhatsApp de pedidos (solo dígitos, ej. 13055551234). Vacío = checkout muestra resumen.
 var CURRENCY = '$';
+
+/* ===== idioma EN/ES ===== */
+var LANG='en'; try{LANG=localStorage.getItem('gm_lang')||'en';}catch(e){}
+function applyLang(l){
+  LANG=(l==='es')?'es':'en'; document.documentElement.lang=LANG;
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    var v=el.getAttribute('data-'+LANG); if(v==null) return;
+    if(/[<&]/.test(v)) el.innerHTML=v; else el.textContent=v;
+  });
+  var t=document.getElementById('langToggle');
+  if(t){t.querySelector('.l-en').classList.toggle('on',LANG==='en');t.querySelector('.l-es').classList.toggle('on',LANG==='es');}
+  try{localStorage.setItem('gm_lang',LANG);}catch(e){}
+  if(typeof render==='function') render();
+}
+var _lt=document.getElementById('langToggle');
+if(_lt) _lt.addEventListener('click',function(){applyLang(LANG==='en'?'es':'en');});
 
 /* ===== nav scroll + burger ===== */
 var nav=document.getElementById('nav');
@@ -550,7 +582,7 @@ function render(){
   var c=document.getElementById('cartCount');c.textContent=count();
   document.getElementById('cartTotal').textContent=CURRENCY+total();
   var box=document.getElementById('cartItems');var keys=Object.keys(CART);
-  if(!keys.length){box.innerHTML='<div class="cart-empty">Your bag is empty.<br>Add a matcha to get started 🍵</div>';return;}
+  if(!keys.length){box.innerHTML='<div class="cart-empty">'+(LANG==='es'?'Tu bolsa está vacía.<br>Agrega un matcha para empezar 🍵':'Your bag is empty.<br>Add a matcha to get started 🍵')+'</div>';return;}
   box.innerHTML=keys.map(function(k){var it=CART[k];
     return '<div class="ci"><img src="assets/img/'+it.img+'.jpg" alt=""><div class="ci-b"><b>'+it.name+'</b><span>'+CURRENCY+it.price+'</span></div>'
     +'<div class="ci-qty"><button data-m="'+k+'">−</button><b>'+it.q+'</b><button data-p="'+k+'">+</button></div></div>';}).join('');
@@ -574,6 +606,7 @@ document.getElementById('checkoutBtn').addEventListener('click',function(){
   else{window.open('https://www.instagram.com/gallete_co/','_blank');}
 });
 render();
+applyLang(LANG);
 </script>
 <nav class="ctry-switch" aria-label="Country">
   <span class="cs-lbl">Country</span>
