@@ -62,7 +62,7 @@
     {"@type": "AdministrativeArea", "name": "South Florida"}
   ],
   "sameAs": ["https://www.instagram.com/gallete_co"],
-  "knowsLanguage": ["en", "es", "fr"]
+  "knowsLanguage": ["en", "es"]
 }
 </script>
 <script type="application/ld+json">
@@ -91,6 +91,23 @@
   .cs-home{width:32px;height:38px;display:flex;align-items:center;justify-content:center;color:#6F0021;opacity:.6;font-size:1.1rem;text-decoration:none;border-left:1px solid rgba(111,0,33,.14);margin-left:2px}
   .cs-opt:hover,.cs-home:hover{opacity:1}
   @media(max-width:560px){.ctry-switch .cs-lbl{display:none}.ctry-switch{padding:6px 8px}}
+  /* Lista de espera (Colombia) */
+  .wl{background:linear-gradient(180deg,var(--pink-bg,#FFF1F8),var(--cream-bg,#EFDECA))}
+  .wl-in{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center;max-width:900px;margin:0 auto}
+  .wl-gali img{width:clamp(150px,20vw,230px);height:auto;filter:drop-shadow(0 18px 32px rgba(111,0,33,.28));animation:wlfloat 5s ease-in-out infinite}
+  @keyframes wlfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @media(prefers-reduced-motion:reduce){.wl-gali img{animation:none}}
+  .wl-kick{display:inline-block;font-family:var(--font-body,sans-serif);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:var(--matcha-deep,#8F8D17);margin-bottom:10px}
+  .wl-copy h2{font-family:var(--font-impact,sans-serif);text-transform:uppercase;color:var(--wine,#6F0021);font-size:clamp(1.6rem,4vw,2.5rem);letter-spacing:.005em;line-height:1.02;margin:0 0 8px}
+  .wl-copy p{color:var(--ink,#3A0A1B);opacity:.84;margin:0 0 16px;max-width:46ch;line-height:1.5}
+  .wl-form{display:flex;flex-wrap:wrap;gap:10px;max-width:470px}
+  .wl-form input{flex:1 1 190px;border:1.5px solid rgba(111,0,33,.18);border-radius:12px;padding:.8rem 1rem;font-family:inherit;font-size:1rem;background:#fff;color:var(--ink,#3A0A1B)}
+  .wl-form input:focus{outline:none;border-color:var(--pink,#FC82BD)}
+  .wl-form .btn{flex:1 1 100%;justify-content:center}
+  .wl-msg{flex:1 1 100%;font-size:.9rem;min-height:1em}
+  .wl-msg.ok{color:#1f9d6a;font-weight:600}.wl-msg.err{color:#c0392b}
+  .wl-sent{font-family:var(--font-script,cursive);font-size:1.5rem;color:var(--wine,#6F0021)}
+  @media(max-width:640px){.wl-in{grid-template-columns:1fr;text-align:center}.wl-gali{margin:0 auto}.wl-form{justify-content:center}.wl-copy p{margin-inline:auto}}
 </style>
 </head>
 <body>
@@ -190,6 +207,26 @@
         <img class="hero-slide" src="assets/img/hero-b2.webp" alt="Galleté Nutella cookie, gooey inside" fetchpriority="high">
       </div>
       <div class="hero-badge" data-en="fresh<br>today" data-es="recién<br>horneadas">fresh<br>today</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!--  🇨🇴 LISTA DE ESPERA (aditivo · reversible con el resto de Colombia) -->
+<!-- ============================================================= -->
+<section class="section wl" id="waitlist">
+  <div class="container wl-in">
+    <div class="wl-gali"><img src="assets/img/gally-hi.png" alt="Gali, la mascota de Galleté" loading="lazy"></div>
+    <div class="wl-copy">
+      <span class="wl-kick" data-en="Coming soon to Colombia" data-es="Muy pronto en Colombia">Coming soon to Colombia</span>
+      <h2 data-en="Be the first to taste them" data-es="Sé de las primeras en probarlas">Be the first to taste them</h2>
+      <p data-en="Leave your name and your WhatsApp or email, and Gali will let you know the moment we land in Colombia. 🍪" data-es="Déjanos tu nombre y tu WhatsApp o correo, y Gali te avisa apenas lleguemos a Colombia. 🍪">Leave your name and your WhatsApp or email, and Gali will let you know the moment we land in Colombia. 🍪</p>
+      <form class="wl-form" id="wlForm" autocomplete="on">
+        <input id="wl-name" type="text" placeholder="Tu nombre · Your name" autocomplete="name" aria-label="Nombre">
+        <input id="wl-contact" type="text" placeholder="WhatsApp o correo · WhatsApp or email" autocomplete="email" aria-label="Contacto">
+        <button type="submit" class="btn btn-primary" data-en="Notify me 🐻" data-es="Avísenme 🐻">Notify me 🐻</button>
+        <div class="wl-msg" id="wlMsg" role="status" aria-live="polite"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -1349,6 +1386,27 @@ const MARKETS = [
     requestAnimationFrame(loop);
   }
   if(!reduce) requestAnimationFrame(loop);
+})();
+</script>
+<script>
+/* Lista de espera Colombia → /api/waitlist (avisa al equipo + queda registrado). */
+(function(){
+  var f=document.getElementById('wlForm'); if(!f) return;
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var btn=f.querySelector('button'), msg=document.getElementById('wlMsg');
+    var nombre=(document.getElementById('wl-name').value||'').trim();
+    var contacto=(document.getElementById('wl-contact').value||'').trim();
+    if(!contacto){msg.className='wl-msg err';msg.textContent='Déjanos tu WhatsApp o correo 🙂';return;}
+    btn.disabled=true;var old=btn.textContent;btn.textContent='Enviando…';msg.className='wl-msg';msg.textContent='';
+    fetch('/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nombre,contacto:contacto,origen:'Galleté Colombia'})})
+      .then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d};});})
+      .then(function(x){
+        if(x.ok&&x.d&&x.d.ok){ f.innerHTML='<div class="wl-sent">¡Listo'+(nombre?(', '+nombre.split(' ')[0]):'')+'! Gali te avisa apenas lleguemos 🐻🍪</div>'; }
+        else{throw new Error('x');}
+      })
+      .catch(function(){btn.disabled=false;btn.textContent=old;msg.className='wl-msg err';msg.textContent='No se pudo registrar, intenta de nuevo.';});
+  });
 })();
 </script>
 </body>
