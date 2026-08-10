@@ -14,12 +14,12 @@ export default async function handler(req, res) {
   const contacto = String(b.contacto || '').trim().slice(0, 140); // correo o WhatsApp
   const origen   = String(b.origen   || 'Galleté Colombia').slice(0, 60);
 
-  if (!contacto) return res.status(400).json({ error: 'Déjanos tu correo o WhatsApp, por favor.' });
+  if (!contacto) return res.status(400).json({ error: 'Déjanos tu correo, por favor.' });
 
   const fecha = new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota', hour12: false });
   const mensaje = [
     nombre ? ('Nombre: ' + nombre) : '',
-    'Contacto: ' + contacto,
+    'Correo: ' + contacto,
     'Quiere ser de los primeros en probar Galleté cuando llegue a Colombia.'
   ].filter(Boolean).join('\n');
 

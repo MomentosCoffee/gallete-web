@@ -240,10 +240,10 @@
     <div class="wl-copy">
       <span class="wl-kick" data-en="Coming soon to Colombia" data-es="Muy pronto en Colombia">Coming soon to Colombia</span>
       <h2 data-en="Be the first to taste them" data-es="Sé de las primeras en probarlas">Be the first to taste them</h2>
-      <p data-en="Leave your name and your WhatsApp or email, and Gali will let you know the moment we land in Colombia. 🍪" data-es="Déjanos tu nombre y tu WhatsApp o correo, y Gali te avisa apenas lleguemos a Colombia. 🍪">Leave your name and your WhatsApp or email, and Gali will let you know the moment we land in Colombia. 🍪</p>
+      <p data-en="Leave your name and your email, and Gali will let you know the moment we land in Colombia. 🍪" data-es="Déjanos tu nombre y tu correo, y Gali te avisa apenas lleguemos a Colombia. 🍪">Leave your name and your email, and Gali will let you know the moment we land in Colombia. 🍪</p>
       <form class="wl-form" id="wlForm" autocomplete="on">
-        <input id="wl-name" type="text" placeholder="Tu nombre · Your name" autocomplete="name" aria-label="Nombre">
-        <input id="wl-contact" type="text" placeholder="WhatsApp o correo · WhatsApp or email" autocomplete="email" aria-label="Contacto">
+        <input id="wl-name" type="text" placeholder="Tu nombre" autocomplete="name" aria-label="Nombre">
+        <input id="wl-contact" type="email" placeholder="Tu correo" autocomplete="email" aria-label="Correo">
         <button type="submit" class="btn btn-primary" data-en="Notify me 🐻" data-es="Avísenme 🐻">Notify me 🐻</button>
         <div class="wl-msg" id="wlMsg" role="status" aria-live="polite"></div>
       </form>
@@ -1446,20 +1446,33 @@ const MARKETS = [
 /* Lista de espera Colombia → /api/waitlist (avisa al equipo + queda registrado). */
 (function(){
   var f=document.getElementById('wlForm'); if(!f) return;
+  /* casillas en el idioma actual de la página (cambian con el toggle) */
+  function wlPh(){
+    var es=document.documentElement.lang==='es';
+    var n=document.getElementById('wl-name'), c=document.getElementById('wl-contact');
+    if(n) n.placeholder = es?'Tu nombre':'Your name';
+    if(c) c.placeholder = es?'Tu correo':'Your email';
+  }
+  wlPh();
+  try{ new MutationObserver(wlPh).observe(document.documentElement,{attributes:true,attributeFilter:['lang']}); }catch(e){}
   f.addEventListener('submit',function(ev){
     ev.preventDefault();
+    var es=document.documentElement.lang==='es';
     var btn=f.querySelector('button'), msg=document.getElementById('wlMsg');
     var nombre=(document.getElementById('wl-name').value||'').trim();
     var contacto=(document.getElementById('wl-contact').value||'').trim();
-    if(!contacto){msg.className='wl-msg err';msg.textContent='Déjanos tu WhatsApp o correo 🙂';return;}
+    if(!contacto){msg.className='wl-msg err';msg.textContent=es?'Déjanos tu correo 🙂':'Leave us your email 🙂';return;}
     btn.disabled=true;var old=btn.textContent;btn.textContent='Enviando…';msg.className='wl-msg';msg.textContent='';
     fetch('/api/waitlist',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:nombre,contacto:contacto,origen:'Galleté Colombia'})})
       .then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d};});})
       .then(function(x){
-        if(x.ok&&x.d&&x.d.ok){ f.innerHTML='<div class="wl-sent">¡Listo'+(nombre?(', '+nombre.split(' ')[0]):'')+'! Gali te avisa apenas lleguemos 🐻🍪</div>'; }
+        if(x.ok&&x.d&&x.d.ok){
+          var first=nombre?(', '+nombre.split(' ')[0]):'';
+          f.innerHTML='<div class="wl-sent">'+(es?('¡Listo'+first+'! Gali te avisa apenas lleguemos 🐻'):('You'+"'"+'re in'+first+'! Gali will let you know 🐻'))+'</div>';
+        }
         else{throw new Error('x');}
       })
-      .catch(function(){btn.disabled=false;btn.textContent=old;msg.className='wl-msg err';msg.textContent='No se pudo registrar, intenta de nuevo.';});
+      .catch(function(){btn.disabled=false;btn.textContent=old;msg.className='wl-msg err';msg.textContent=es?'No se pudo registrar, intenta de nuevo.':'Could not sign you up, please try again.';});
   });
 })();
 </script>
