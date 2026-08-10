@@ -125,6 +125,9 @@
   .co-pop .btn{justify-content:center;width:100%}
   .co-pop-close2{background:none;border:0;color:var(--wine,#6F0021);opacity:.6;font-family:var(--font-display,sans-serif);font-weight:600;font-size:.94rem;cursor:pointer;padding:6px}
   .co-pop-close2:hover{opacity:1}
+  /* botones verdes (matcha) para sumar el verde a la marca */
+  .co-pop .co-pop-join,.wl-form .btn.btn-primary{background:var(--matcha,#B7B424)!important;color:#fff!important;box-shadow:0 12px 26px -12px rgba(143,141,23,.9)!important}
+  .co-pop .co-pop-join:hover,.wl-form .btn.btn-primary:hover{filter:brightness(1.05)}
 </style>
 </head>
 <body><nav class="ctry-switch" aria-label="Country">
@@ -1408,9 +1411,8 @@ const MARKETS = [
   <div class="co-pop">
     <button class="co-pop-x" id="coPopX" aria-label="Cerrar">&times;</button>
     <img class="co-pop-gali" src="assets/img/gally-hi.png" alt="Gali, la mascota de Galleté">
-    <span class="co-pop-flag">🇨🇴</span>
     <h2 class="co-pop-h" data-en="Coming soon to Colombia" data-es="Muy pronto en Colombia">Coming soon to Colombia</h2>
-    <p class="co-pop-p" data-en="Take a look at everything we're bringing — and be the first to know the moment we arrive. 🍪" data-es="Mira todo lo que traemos — y sé de las primeras en enterarte apenas lleguemos. 🍪">Take a look at everything we're bringing — and be the first to know the moment we arrive. 🍪</p>
+    <p class="co-pop-p" data-en="Take a look at everything we're bringing — and be the first to know the moment we arrive." data-es="Mira todo lo que traemos — y sé de las primeras en enterarte apenas lleguemos.">Take a look at everything we're bringing — and be the first to know the moment we arrive.</p>
     <div class="co-pop-btns">
       <button class="btn btn-primary co-pop-join" data-en="Join the waitlist 🐻" data-es="Unirme a la lista 🐻">Join the waitlist 🐻</button>
       <button class="co-pop-close2" id="coPopClose2" data-en="Explore the menu" data-es="Ver el portafolio">Explore the menu</button>
