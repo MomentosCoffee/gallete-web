@@ -251,6 +251,14 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 .mdrawer a{font-family:var(--font-display);font-weight:600;font-size:1.2rem;color:var(--wine);padding:16px clamp(24px,7vw,40px);border-top:1px solid rgba(111,0,33,.1)}
 .mback{position:fixed;inset:0;background:rgba(58,10,27,.4);z-index:110;opacity:0;pointer-events:none;transition:opacity .3s}
 .mback.on{opacity:1;pointer-events:auto}
+
+/* selector de país (flotante, esquina) */
+.ctry-switch{position:fixed;left:16px;bottom:16px;z-index:150;display:flex;gap:3px;align-items:center;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(111,0,33,.1);border-radius:999px;padding:5px 6px;box-shadow:var(--shadow-sm)}
+.cs-opt{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.02rem;text-decoration:none;opacity:.5;transition:opacity .2s var(--ease-out),background .2s,transform .15s}
+.cs-opt:active{transform:scale(.92)}
+.cs-opt.is-active{opacity:1;background:var(--matcha-bg);box-shadow:inset 0 0 0 2px var(--matcha)}
+.cs-home{width:30px;height:34px;display:flex;align-items:center;justify-content:center;color:var(--wine);opacity:.55;font-size:1.05rem;text-decoration:none;border-left:1px solid rgba(111,0,33,.12);margin-left:2px}
+@media(hover:hover){.cs-opt:hover{opacity:1;background:rgba(111,0,33,.06)}.cs-home:hover{opacity:1}}
 </style>
 </head>
 <body id="top">
@@ -565,5 +573,10 @@ document.getElementById('checkoutBtn').addEventListener('click',function(){
 });
 render();
 </script>
+<nav class="ctry-switch" aria-label="Country">
+  <a href="/matcha" class="cs-opt is-active" title="United States" aria-current="page">🇺🇸</a>
+  <a href="/colombia" class="cs-opt" title="Colombia">🇨🇴</a>
+  <a href="/" class="cs-home" title="Change country" aria-label="Change country">⌂</a>
+</nav>
 </body>
 </html>

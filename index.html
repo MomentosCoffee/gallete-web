@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Galleté · Choose your place</title>
 <meta name="description" content="Galleté — gooey cookies & ceremonial matcha, made to be shared. Choose your country.">
-<meta name="theme-color" content="#EFDECA">
+<meta name="theme-color" content="#6F0021">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -16,93 +16,110 @@
 @font-face{font-family:'Bolze';src:url('assets/fonts/bolze.otf') format('opentype');font-weight:400 900;font-display:swap}
 @font-face{font-family:'Bolze Script';src:url('assets/fonts/bolze-script.otf') format('opentype');font-display:swap}
 :root{
-  --pink:#FC82BD; --pink-soft:#FFE3F1; --wine:#6F0021; --wine-soft:#9A2447;
-  --matcha:#B7B424; --matcha-deep:#8F8D17; --matcha-bg:#F3F4DE;
-  --cream:#EFDFCB; --cream-bg:#EFDECA; --ink:#3A0A1B;
+  --pink:#FC82BD; --wine:#6F0021; --wine-soft:#9A2447;
+  --matcha:#B7B424; --matcha-deep:#6f6d14; --cream:#EFDFCB;
   --font-impact:'Bolze','Archivo',sans-serif; --font-script:'Bolze Script',cursive;
   --font-display:'Fredoka',system-ui,sans-serif; --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
-  --ease-out:cubic-bezier(.23,1,.32,1);
+  --eo:cubic-bezier(.23,1,.32,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--font-body);color:var(--ink);background:
-  radial-gradient(120% 90% at 15% 0%,var(--pink-soft) 0%,transparent 46%),
-  radial-gradient(120% 90% at 90% 100%,var(--matcha-bg) 0%,transparent 50%),
-  var(--cream-bg);
-  min-height:100svh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{display:block;max-width:100%}
-.wrap{flex:1;width:100%;max-width:960px;margin:0 auto;padding:clamp(28px,6vw,56px) clamp(20px,5vw,40px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.logo{height:46px;width:auto;margin-bottom:clamp(20px,4vw,32px);animation:pop .6s var(--ease-out) both}
-.kick{font-family:var(--font-body);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;color:var(--wine-soft);margin-bottom:12px;animation:rise .6s var(--ease-out) .05s both}
-h1{font-family:var(--font-impact);text-transform:uppercase;color:var(--wine);font-size:clamp(2.2rem,7vw,4rem);letter-spacing:.005em;line-height:.98;margin-bottom:10px;animation:rise .6s var(--ease-out) .1s both}
-.sub{color:var(--ink);opacity:.8;font-size:1.05rem;max-width:34ch;margin:0 auto clamp(28px,5vw,42px);line-height:1.5;animation:rise .6s var(--ease-out) .15s both}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,26px);width:100%;max-width:720px}
-.pick{position:relative;display:block;background:#fff;border-radius:26px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 20px 50px -26px rgba(58,10,27,.5);border:1px solid rgba(111,0,33,.06);transition:transform .28s var(--ease-out),box-shadow .28s var(--ease-out);animation:rise .7s var(--ease-out) both}
-.pick:nth-child(1){animation-delay:.2s}.pick:nth-child(2){animation-delay:.28s}
-.pick:active{transform:scale(.98)}
-@media(hover:hover){.pick:hover{transform:translateY(-6px);box-shadow:0 34px 70px -30px rgba(58,10,27,.55)}}
-.pick .ph{aspect-ratio:4/3;overflow:hidden;position:relative}
-.pick .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease-out)}
-@media(hover:hover){.pick:hover .ph img{transform:scale(1.06)}}
-.pick .flag{position:absolute;top:12px;left:12px;font-size:1.5rem;background:rgba(255,255,255,.92);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -8px rgba(0,0,0,.4)}
-.pick .body{padding:18px 18px 22px;text-align:left}
-.pick .country{font-family:var(--font-impact);text-transform:uppercase;font-size:1.35rem;letter-spacing:.01em;color:var(--wine);line-height:1}
-.pick .what{font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--matcha-deep);margin-top:4px;display:flex;align-items:center;justify-content:space-between}
-.pick.co .what{color:var(--wine-soft)}
-.pick .what .arw{transition:transform .25s var(--ease-out)}
-@media(hover:hover){.pick:hover .what .arw{transform:translateX(4px)}}
-.tag{position:absolute;top:12px;right:12px;background:var(--pink);color:var(--wine);font-family:var(--font-display);font-weight:700;font-size:.66rem;padding:4px 10px;border-radius:99px;letter-spacing:.03em;text-transform:uppercase}
-.pick.co .tag{background:var(--cream);color:var(--wine)}
-.foot{text-align:center;padding:22px 20px 26px;color:var(--wine-soft)}
-.foot .sig{font-family:var(--font-script);font-size:1.35rem}
-.foot a{color:var(--pink);font-weight:700;text-decoration:none}
-@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}
-@media(max-width:560px){.cards{grid-template-columns:1fr;max-width:380px}.pick .ph{aspect-ratio:16/10}}
+html,body{height:100%}
+body{font-family:var(--font-body);background:#1a0710;color:#fff;overflow:hidden}
+a{text-decoration:none;color:inherit}
+
+.gate{display:flex;height:100svh;width:100%;overflow:hidden}
+.side{position:relative;flex:1 1 50%;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;transition:flex-basis .55s var(--eo)}
+.side.us{animation:slideL .9s var(--eo) both}
+.side.co{animation:slideR .9s var(--eo) both}
+.side .bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.06);transition:transform .7s var(--eo),filter .5s var(--eo);filter:saturate(1.02)}
+.side .shade{position:absolute;inset:0;transition:opacity .5s var(--eo)}
+.side.us .shade{background:linear-gradient(to top,rgba(35,40,3,.86) 0%,rgba(35,40,3,.30) 42%,rgba(20,25,0,.30) 100%)}
+.side.co .shade{background:linear-gradient(to top,rgba(70,0,21,.88) 0%,rgba(70,0,21,.32) 42%,rgba(40,0,12,.34) 100%)}
+.side-in{position:relative;z-index:2;text-align:center;padding:0 24px 13vh;transform:translateY(10px);opacity:0;animation:rise .8s var(--eo) .5s both}
+.flag{font-size:2rem;display:inline-block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.4));margin-bottom:10px}
+.ctry{display:block;font-family:var(--font-impact);text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.9rem,4.4vw,3.2rem);line-height:.98;text-shadow:0 3px 20px rgba(0,0,0,.35)}
+.what{display:block;font-family:var(--font-display);font-weight:600;font-size:clamp(1rem,2vw,1.25rem);margin-top:6px;opacity:.95}
+.go{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-family:var(--font-display);font-weight:600;font-size:.95rem;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.55);color:#fff;padding:.7rem 1.4rem;border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .25s var(--eo),transform .2s var(--eo)}
+.go i{font-style:normal;transition:transform .25s var(--eo)}
+.side .tag{position:absolute;top:calc(env(safe-area-inset-top,0px) + 20px);right:20px;z-index:2;font-family:var(--font-display);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;padding:6px 12px;border-radius:999px;opacity:0;animation:rise .8s var(--eo) .7s both}
+.side.us .tag{background:var(--pink);color:var(--wine)}
+.side.co .tag{background:var(--cream);color:var(--wine)}
+
+/* hover: la mitad enfocada crece */
+@media(hover:hover) and (min-width:721px){
+  .gate:hover .side{flex-basis:42%}
+  .gate .side:hover{flex-basis:58%}
+  .side:hover .bg{transform:scale(1.13)}
+  .side:hover .shade{opacity:.72}
+  .side:hover .go{background:rgba(255,255,255,.26)}
+  .side:hover .go i{transform:translateX(5px)}
+}
+.side:active{filter:brightness(.96)}
+
+/* marca central flotante */
+.brandmark{position:absolute;top:clamp(26px,7vh,64px);left:50%;transform:translateX(-50%);z-index:5;text-align:center;pointer-events:none;width:max-content}
+.brandmark img{height:clamp(40px,6.4vw,58px);width:auto;filter:drop-shadow(0 6px 20px rgba(0,0,0,.45));animation:pop .8s var(--eo) both,float 5s ease-in-out 1s infinite}
+.brandmark .wr{display:block;margin-top:12px;font-family:var(--font-body);font-weight:700;letter-spacing:.24em;text-transform:uppercase;font-size:.66rem;color:#fff;opacity:0;text-shadow:0 2px 10px rgba(0,0,0,.5);animation:rise .8s var(--eo) .35s both}
+.divider{position:absolute;top:0;left:50%;width:1px;height:100%;background:rgba(255,255,255,.16);z-index:4;transform:translateX(-50%);animation:growH 1s var(--eo) .3s both}
+.footnote{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:0;right:0;z-index:5;text-align:center;pointer-events:none;font-family:var(--font-script);font-size:1.25rem;color:#fff;opacity:0;text-shadow:0 2px 12px rgba(0,0,0,.5);animation:rise .8s var(--eo) .9s both}
+
+@keyframes slideL{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+@keyframes slideR{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes growH{from{transform:translateX(-50%) scaleY(0)}to{transform:translateX(-50%) scaleY(1)}}
+
+@media(max-width:720px){
+  .gate{flex-direction:column}
+  .side{flex-basis:50%}
+  .side-in{padding-bottom:7vh}
+  .divider{width:100%;height:1px;top:50%;left:0;transform:none;animation:growW 1s var(--eo) .3s both}
+  .brandmark{top:calc(env(safe-area-inset-top,0px) + 16px)}
+  .footnote{display:none}
+}
+@keyframes growW{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.side-in,.brandmark .wr,.brandmark img,.side .tag,.footnote{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <img class="logo" src="assets/img/logo-gallete.png" alt="Galleté">
-    <span class="kick">A cookie to share · a tea to remember</span>
-    <h1>Where are you?</h1>
-    <p class="sub">Pick your place and we'll take you to the good stuff. <span style="white-space:nowrap">Elige tu país 🤎</span></p>
-
-    <div class="cards">
-      <a class="pick us" href="/matcha" data-country="us" aria-label="United States — Matcha">
-        <div class="ph"><img src="assets/img/matcha-iced.jpg" alt="Galleté ceremonial matcha"></div>
+  <main class="gate">
+    <a class="side us" href="/matcha" data-c="us" aria-label="United States — Ceremonial Matcha">
+      <div class="bg" style="background-image:url('assets/img/matcha-whisk.jpg')"></div>
+      <div class="shade"></div>
+      <span class="tag">Shop now</span>
+      <div class="side-in">
         <span class="flag">🇺🇸</span>
-        <span class="tag">Shop now</span>
-        <div class="body">
-          <div class="country">United States</div>
-          <div class="what">Ceremonial Matcha <span class="arw">→</span></div>
-        </div>
-      </a>
+        <span class="ctry">United States</span>
+        <span class="what">Ceremonial Matcha</span>
+        <span class="go">Enter <i>→</i></span>
+      </div>
+    </a>
 
-      <a class="pick co" href="/colombia" data-country="co" aria-label="Colombia — Cookies">
-        <div class="ph"><img src="assets/img/hero-a.jpg" alt="Galleté gooey cookies"></div>
+    <a class="side co" href="/colombia" data-c="co" aria-label="Colombia — Galletas gooey">
+      <div class="bg" style="background-image:url('assets/img/hero-a.jpg')"></div>
+      <div class="shade"></div>
+      <span class="tag">Muy pronto</span>
+      <div class="side-in">
         <span class="flag">🇨🇴</span>
-        <span class="tag">Muy pronto</span>
-        <div class="body">
-          <div class="country">Colombia</div>
-          <div class="what">Galletas gooey <span class="arw">→</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
+        <span class="ctry">Colombia</span>
+        <span class="what">Galletas gooey</span>
+        <span class="go">Entrar <i>→</i></span>
+      </div>
+    </a>
 
-  <div class="foot">
-    <div class="sig">made to be shared</div>
-    <div style="margin-top:6px"><a href="https://www.instagram.com/gallete_co" target="_blank" rel="noopener">@gallete_co</a></div>
-  </div>
+    <div class="divider" aria-hidden="true"></div>
+    <div class="brandmark">
+      <img src="assets/img/logo-gallete-cream.png" alt="Galleté" onerror="this.src='assets/img/logo-gallete.png'">
+      <span class="wr">Where are you? · ¿Dónde estás?</span>
+    </div>
+    <div class="footnote">a cookie to share, a tea to remember</div>
+  </main>
 
   <script>
-    /* Recuerda la elección para la próxima vez (sin forzar). */
-    try{
-      document.querySelectorAll('.pick').forEach(function(a){
-        a.addEventListener('click',function(){ try{localStorage.setItem('gallete_country',a.dataset.country);}catch(e){} });
-      });
-    }catch(e){}
+    try{document.querySelectorAll('.side').forEach(function(a){
+      a.addEventListener('click',function(){try{localStorage.setItem('gallete_country',a.dataset.c);}catch(e){}});
+    });}catch(e){}
   </script>
 </body>
 </html>
