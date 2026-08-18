@@ -41,7 +41,7 @@ a{text-decoration:none;color:inherit}
 .what{display:block;font-family:var(--font-display);font-weight:600;font-size:clamp(1rem,2vw,1.25rem);margin-top:6px;opacity:.95}
 .go{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-family:var(--font-display);font-weight:600;font-size:.95rem;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.55);color:#fff;padding:.7rem 1.4rem;border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .25s var(--eo),transform .2s var(--eo)}
 .go i{font-style:normal;transition:transform .25s var(--eo)}
-.side .tag{position:absolute;top:calc(env(safe-area-inset-top,0px) + 20px);right:20px;z-index:2;font-family:var(--font-display);font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;padding:6px 12px;border-radius:999px;opacity:0;animation:rise .8s var(--eo) .7s both}
+.side .tag{position:absolute;top:calc(env(safe-area-inset-top,0px) + 22px);right:22px;z-index:2;font-family:var(--font-display);font-weight:700;font-size:.98rem;text-transform:uppercase;letter-spacing:.05em;padding:10px 20px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.28);opacity:0;animation:rise .8s var(--eo) .7s both}
 .side.us .tag{background:var(--pink);color:var(--wine);left:20px;right:auto}
 .side.co .tag{background:var(--cream);color:var(--wine)}
 
@@ -57,9 +57,9 @@ a{text-decoration:none;color:inherit}
 .side:active{filter:brightness(.96)}
 
 /* marca central flotante */
-.brandmark{position:absolute;top:clamp(26px,7vh,64px);left:50%;transform:translateX(-50%);z-index:5;text-align:center;pointer-events:none;width:max-content}
-.brandmark img{height:clamp(54px,8.4vw,78px);width:auto;filter:drop-shadow(0 6px 20px rgba(0,0,0,.45));animation:pop .8s var(--eo) both,float 5s ease-in-out 1s infinite}
-.brandmark .wr{display:block;margin-top:12px;font-family:var(--font-body);font-weight:700;letter-spacing:.24em;text-transform:uppercase;font-size:.66rem;color:#fff;opacity:0;text-shadow:0 2px 10px rgba(0,0,0,.5);animation:rise .8s var(--eo) .35s both}
+.brandmark{position:absolute;top:clamp(72px,13vh,132px);left:50%;transform:translateX(-50%);z-index:5;text-align:center;pointer-events:none;width:max-content}
+.brandmark img{height:clamp(235px,31vw,368px);width:auto;filter:drop-shadow(0 6px 20px rgba(0,0,0,.45));animation:pop .8s var(--eo) both,float 5s ease-in-out 1s infinite}
+.brandmark .wr{display:block;margin-top:14px;font-family:var(--font-body);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:.9rem;color:#fff;opacity:0;text-shadow:0 2px 10px rgba(0,0,0,.5);animation:rise .8s var(--eo) .35s both}
 .divider{position:absolute;top:0;left:50%;width:1px;height:100%;background:rgba(255,255,255,.16);z-index:4;transform:translateX(-50%);animation:growH 1s var(--eo) .3s both}
 .footnote{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);left:50%;transform:translateX(-50%);z-index:6;pointer-events:none;font-family:var(--font-script);font-size:1.32rem;color:#fff;white-space:nowrap;background:rgba(40,8,20,.46);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);padding:6px 22px;border-radius:999px;text-shadow:0 1px 6px rgba(0,0,0,.45);opacity:0;animation:fade .8s var(--eo) .9s both}
 @keyframes fade{from{opacity:0}to{opacity:1}}
@@ -85,32 +85,28 @@ a{text-decoration:none;color:inherit}
 </head>
 <body>
   <main class="gate">
-    <a class="side us" href="/matcha" data-c="us" aria-label="United States — Ceremonial Matcha">
-      <div class="bg" style="background-image:url('assets/img/matcha-whisk.jpg')"></div>
+    <a class="side us" href="/matcha" data-c="us" aria-label="Miami — Ceremonial Matcha">
+      <div class="bg" style="background-image:url('assets/img/splash-miami.jpg')"></div>
       <div class="shade"></div>
-      <span class="tag">Shop now</span>
       <div class="side-in">
-        <span class="flag">🇺🇸</span>
-        <span class="ctry">United States</span>
+        <span class="ctry">Miami</span>
         <span class="what">Ceremonial Matcha</span>
-        <span class="go">Enter <i>→</i></span>
+        <span class="go">Shop now <i>→</i></span>
       </div>
     </a>
 
-    <a class="side co" href="/colombia" data-c="co" aria-label="Colombia — Galletas gooey">
+    <a class="side co" href="/colombia" data-c="co" aria-label="Colombia — New York style">
       <div class="bg" style="background-image:url('assets/img/hero-a.jpg')"></div>
       <div class="shade"></div>
-      <span class="tag">Muy pronto</span>
       <div class="side-in">
-        <span class="flag">🇨🇴</span>
         <span class="ctry">Colombia</span>
-        <span class="what">Galletas gooey</span>
-        <span class="go">Entrar <i>→</i></span>
+        <span class="what">New York style</span>
+        <span class="go">Conócenos <i>→</i></span>
       </div>
     </a>
 
     <div class="brandmark">
-      <img src="assets/img/logo-gallete-cream.png" alt="Galleté" onerror="this.src='assets/img/logo-gallete.png'">
+      <img src="assets/img/logo-gallete-splash.png" alt="Galleté" onerror="this.src='assets/img/logo-gallete-cream.png'">
       <span class="wr">Where are you? · ¿Dónde estás?</span>
     </div>
   </main>
