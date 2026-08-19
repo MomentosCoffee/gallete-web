@@ -285,6 +285,13 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 @keyframes gfloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(1.5deg)}}
 @media(prefers-reduced-motion:reduce){.ritual-gali{animation:none}}
 @media(max-width:600px){.gali-tip{flex-direction:column;text-align:center}.gali-tip p{text-align:center}}
+/* Instagram carrusel (Get inspired) */
+.ig-rail::-webkit-scrollbar{display:none}
+.ig-slot{flex:0 0 auto;width:230px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);scroll-snap-align:center;background:#0d0206;position:relative;transition:transform .25s var(--ease-out)}
+@media(hover:hover){.ig-slot:hover{transform:translateY(-5px)}}
+.ig-slot img,.ig-slot video{width:100%;height:100%;object-fit:cover;display:block}
+.ig-slot.is-video::after{content:"play_arrow";font-family:'Material Symbols Rounded';position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.42);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;pointer-events:none}
+@media(max-width:600px){.ig-slot{width:200px}}
 </style>
 </head>
 <body id="top">
@@ -306,7 +313,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 <!-- nav -->
 <header class="nav" id="nav">
  <div class="container nav-inner">
- <a href="#top" class="brand" aria-label="Galleté home"><img src="assets/img/logo-gallete.png" alt="Galleté" class="brand-logo"></a>
+ <a href="/" class="brand" aria-label="Galleté — elegir país"><img src="assets/img/logo-gallete.png" alt="Galleté" class="brand-logo"></a>
  <nav class="nav-links" aria-label="Primary">
  <a href="#story" data-en="The Ritual" data-es="El ritual">The Ritual</a>
  <a href="#why" data-en="Why Ours" data-es="Por qué el nuestro">Why Ours</a>
@@ -342,9 +349,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
  <div class="hero-badge" data-en="2 tins<br>for $35" data-es="2 latas<br>por $35">2 tins<br>for $35</div>
  <div class="hero-photo" id="tinSwap">
  <img class="tin tin-closed" src="assets/img/matcha-ceremonial-closed.jpg" alt="Galleté ceremonial organic matcha tin" fetchpriority="high">
- <img class="tin tin-open" src="assets/img/matcha-ceremonial-open.jpg" alt="Galleté ceremonial matcha tin, open with matcha powder pouring" aria-hidden="true">
- <span class="tin-hint" data-en="Open me ✨" data-es="Ábrela ✨">Open me ✨</span>
- </div>
+ <img class="tin tin-open" src="assets/img/matcha-ceremonial-open.jpg" alt="Galleté ceremonial matcha tin, open with matcha powder pouring" aria-hidden="true"> </div>
 </div>
 </div>
 </section>
@@ -490,11 +495,13 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
  <p class="lead rev" style="margin:14px auto 0" data-en="Real cups, real recipes, real moments. Follow along to see how we make it." data-es="Tazas reales, recetas reales, momentos reales. Síguenos para ver cómo lo preparamos.">Real cups, real recipes, real moments. Follow along to see how we make it.</p>
  </div>
  <div class="ig-rail" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 4px 10px;-webkit-overflow-scrolling:touch">
- <div class="ig-slot" style="flex:0 0 auto;width:232px;aspect-ratio:9/16;border-radius:20px;background:var(--matcha-bg);border:1.6px dashed rgba(143,141,23,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-snap-align:center;color:var(--matcha-deep);font-family:var(--font-display);font-weight:600;font-size:.86rem;padding:14px"><span class="material-symbols-rounded" style="font-size:34px">play_circle</span>video 1<br><small style="opacity:.7">reel de Instagram</small></div>
- <div class="ig-slot" style="flex:0 0 auto;width:232px;aspect-ratio:9/16;border-radius:20px;background:var(--matcha-bg);border:1.6px dashed rgba(143,141,23,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-snap-align:center;color:var(--matcha-deep);font-family:var(--font-display);font-weight:600;font-size:.86rem;padding:14px"><span class="material-symbols-rounded" style="font-size:34px">photo_camera</span>foto 1</div>
- <div class="ig-slot" style="flex:0 0 auto;width:232px;aspect-ratio:9/16;border-radius:20px;background:var(--matcha-bg);border:1.6px dashed rgba(143,141,23,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-snap-align:center;color:var(--matcha-deep);font-family:var(--font-display);font-weight:600;font-size:.86rem;padding:14px"><span class="material-symbols-rounded" style="font-size:34px">play_circle</span>video 2<br><small style="opacity:.7">reel de Instagram</small></div>
- <div class="ig-slot" style="flex:0 0 auto;width:232px;aspect-ratio:9/16;border-radius:20px;background:var(--matcha-bg);border:1.6px dashed rgba(143,141,23,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-snap-align:center;color:var(--matcha-deep);font-family:var(--font-display);font-weight:600;font-size:.86rem;padding:14px"><span class="material-symbols-rounded" style="font-size:34px">photo_camera</span>foto 2</div>
- <div class="ig-slot" style="flex:0 0 auto;width:232px;aspect-ratio:9/16;border-radius:20px;background:var(--matcha-bg);border:1.6px dashed rgba(143,141,23,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;scroll-snap-align:center;color:var(--matcha-deep);font-family:var(--font-display);font-weight:600;font-size:.86rem;padding:14px"><span class="material-symbols-rounded" style="font-size:34px">play_circle</span>video 3<br><small style="opacity:.7">reel de Instagram</small></div>
+ <div class="ig-slot is-video"><video class="ig-vid" muted loop playsinline preload="metadata" poster="assets/img/matcha-hero-poster.jpg"><source src="assets/video/matcha-hero.mp4" type="video/mp4"></video></div>
+ <div class="ig-slot"><img src="assets/img/ig-1.jpg" alt="Galleté matcha en el market" loading="lazy"></div>
+ <div class="ig-slot"><img src="assets/img/ig-2.jpg" alt="Matcha latte Galleté" loading="lazy"></div>
+ <div class="ig-slot"><img src="assets/img/ig-3.jpg" alt="Bebidas de matcha Galleté" loading="lazy"></div>
+ <div class="ig-slot"><img src="assets/img/ig-4.jpg" alt="Preparando matcha en el market" loading="lazy"></div>
+ <div class="ig-slot"><img src="assets/img/ig-5.jpg" alt="Galleta con matcha Galleté" loading="lazy"></div>
+ <div class="ig-slot"><img src="assets/img/ig-6.jpg" alt="Matcha latte con crema" loading="lazy"></div>
  </div>
  <div style="text-align:center;margin-top:10px">
  <a href="https://www.instagram.com/gallete_co" target="_blank" rel="noopener" class="btn btn-primary" data-en="Follow @gallete_co" data-es="Síguenos @gallete_co">Follow @gallete_co</a>
@@ -595,8 +602,8 @@ addEventListener('scroll',function(){nav.classList.toggle('sc',scrollY>8);},{pas
 var _tin=document.getElementById('tinSwap');
 if(_tin){_tin.addEventListener('click',function(){_tin.classList.toggle('is-open');});}
 /* video de preparación: play/pausa según entre o salga de pantalla */
-var _pv=document.querySelector('.prep-video video');
-if(_pv&&'IntersectionObserver' in window){var _pio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var p=_pv.play();if(p&&p.catch)p.catch(function(){});}else{_pv.pause();}});},{threshold:.25});_pio.observe(_pv);}
+var _vids=document.querySelectorAll('.prep-video video, .ig-vid');
+if(_vids.length&&'IntersectionObserver' in window){var _vio=new IntersectionObserver(function(es){es.forEach(function(e){var vd=e.target;if(e.isIntersecting){var p=vd.play();if(p&&p.catch)p.catch(function(){});}else{vd.pause();}});},{threshold:.25});_vids.forEach(function(v){_vio.observe(v);});}
 function toggleM(on){document.getElementById('mdrawer').classList.toggle('on',on);document.getElementById('mback').classList.toggle('on',on);}
 document.getElementById('burger').addEventListener('click',function(){toggleM(true);});
 document.getElementById('mback').addEventListener('click',function(){toggleM(false);});
