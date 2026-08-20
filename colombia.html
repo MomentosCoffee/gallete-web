@@ -1340,7 +1340,7 @@ const MARKETS = [
   }
 
   /* ---------- year ---------- */
-  $('#year').textContent='2026';
+  var _yrEl=$('#year'); if(_yrEl) _yrEl.textContent='2026';
 
   /* ---------- init ---------- */
   renderFamily(); renderMarkets(); renderCart(); applyLang(); autoPhotos();
