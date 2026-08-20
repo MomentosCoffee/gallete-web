@@ -1454,6 +1454,9 @@ const MARKETS = [
 /* Pop-up de "muy pronto en Colombia" — aparece al entrar; el botón lleva a la lista. */
 (function(){
   var ov=document.getElementById('coPop'); if(!ov) return;
+  /* traducir el pop-up al idioma actual (applyLang corre antes de que exista este pop-up) */
+  var _lg=document.documentElement.lang||'es';
+  ov.querySelectorAll('[data-en]').forEach(function(el){var v=el.getAttribute('data-'+_lg);if(v!=null){if(/<[a-z]/i.test(v))el.innerHTML=v;else el.textContent=v;}});
   function close(){ov.classList.remove('on'); try{sessionStorage.setItem('coPopSeen','1');}catch(e){}}
   var seen=false; try{seen=sessionStorage.getItem('coPopSeen')==='1';}catch(e){}
   if(!seen) setTimeout(function(){ov.classList.add('on');},650);
