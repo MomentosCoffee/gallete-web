@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -1170,7 +1170,7 @@ const MARKETS = [
   const fmt=n=>(n==null)?"—":"$"+n;
 
   /* ---------- LANGUAGE ---------- */
-  let lang = (new URLSearchParams(location.search).get('lang')) || localStorage.getItem('gallete_lang') || 'en';
+  let lang = (new URLSearchParams(location.search).get('lang')) || localStorage.getItem('gallete_lang_co') || 'es';
   function applyLang(){
     document.documentElement.lang = lang;
     $$('[data-en]').forEach(el=>{
@@ -1178,7 +1178,7 @@ const MARKETS = [
       if(v!=null){ if(/<[a-z]/i.test(v)) el.innerHTML=v; else el.textContent=v; }
     });
     const t=$('#langToggle'); t.classList.toggle('es', lang==='es');
-    localStorage.setItem('gallete_lang', lang);
+    localStorage.setItem('gallete_lang_co', lang);
     renderFamily(); renderMarkets(); renderCart(); applyPrices(); autoPhotos();
   }
   $('#langToggle').addEventListener('click',()=>{ lang = lang==='en'?'es':'en'; applyLang(); });
