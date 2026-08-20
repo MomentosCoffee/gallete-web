@@ -168,7 +168,7 @@
 <!-- ============================================================= -->
 <header class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="#top" class="brand" aria-label="Galleté home">
+    <a href="/" class="brand" aria-label="Galleté — elegir país">
       <img src="assets/img/logo-gallete.png" alt="Galleté logo" class="brand-logo">
     </a>
 
@@ -871,7 +871,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 
 /* ---- hero ---- */
 /* hero sobre warm ivory (#EFDECA): antes tenía fondo blanco --paper y por eso el ivory no se veía */
-.hero{position:relative;overflow:hidden;padding:0;background:var(--cream-bg)}
+.hero{position:relative;overflow:hidden;padding:0;background:#B5B524}
 .hero-blob{display:none}
 /* el glow que respiraba se quitó: el fondo detrás de la cookie debe quedarse PLANO (pedido de Valeria) */
 .hero-glow{display:none}
@@ -892,16 +892,16 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.05;font-weight:700;col
 /* blob detrás de la cookie: MISMA forma y color plano que las burbujas de
    "from craving to cookie" (.hbubble-1). Color sólido, sin degradado, sin
    animación → el fondo se queda PLANO aunque la galleta se abra/cambie. */
-.hero-disc{position:absolute;top:50%;left:50%;width:min(112%,760px);aspect-ratio:1;
+.hero-disc{position:absolute;top:50%;left:50%;width:min(78%,532px);aspect-ratio:1;
   transform:translate(-50%,-50%) rotate(-9deg);
   background:var(--pink-soft);
   border-radius:47% 53% 58% 42%/52% 44% 56% 48%;
   z-index:0;box-shadow:0 26px 60px -30px rgba(111,0,33,.35)}
 .hero-photo{position:absolute;inset:0;z-index:1;border-radius:0;box-shadow:none;width:auto;aspect-ratio:auto;animation:hero-float 7.5s ease-in-out infinite}
 .hero-swap{position:absolute;overflow:visible}
-.hero-slide{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:94%;max-width:720px;height:auto;aspect-ratio:1;object-fit:contain;opacity:0;transition:opacity .8s var(--ease-out)}
+.hero-slide{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:66%;max-width:505px;height:auto;aspect-ratio:1;object-fit:contain;opacity:0;transition:opacity .8s var(--ease-out)}
 .hero-slide.is-on{opacity:1}
-.hero-badge{position:absolute;z-index:2;top:9%;right:23%;background:var(--matcha);color:#fff;font-family:var(--font-display);font-weight:700;text-align:center;line-height:1.05;width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);box-shadow:var(--shadow-sm);font-size:1.05rem;text-transform:lowercase}
+.hero-badge{position:absolute;z-index:2;top:15%;right:31%;background:var(--matcha);color:#fff;font-family:var(--font-display);font-weight:700;text-align:center;line-height:1.05;width:82px;height:82px;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:rotate(-12deg);box-shadow:var(--shadow-sm);font-size:1.05rem;text-transform:lowercase}
 
 /* ---- photo slots (placeholders until real photos dropped in) ---- */
 .photo-slot{position:relative;background:
